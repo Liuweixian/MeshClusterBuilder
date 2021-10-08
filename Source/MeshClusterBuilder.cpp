@@ -7,8 +7,16 @@
 
 #include "MeshClusterBuilder.hpp"
 
-template<class IndexType>
-void MeshClusterBuilder::Build(BuilderType eBuildType, const Vector3f* pVertexData, const UInt32 nVertexDataCount, const UInt32* pIndexData, const UInt32 nIndexDataCount, const MinMaxAABB bounds, int& nClusterCount, MeshCluster** pMeshCluster)
+MeshClusterBuilder::MeshClusterBuilder()
+{
+}
+
+MeshClusterBuilder::~MeshClusterBuilder()
 {
     
+}
+
+void MeshClusterBuilder::SetClusterSize(int nClusterSize)
+{
+    m_nClusterSize = nClusterSize;
 }

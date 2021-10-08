@@ -10,6 +10,13 @@
 
 #include "Vector3.h"
 
+class AABB
+{
+public:
+    Vector3f m_Center;
+    Vector3f m_Extent;
+};
+
 class MinMaxAABB
 {
 public:

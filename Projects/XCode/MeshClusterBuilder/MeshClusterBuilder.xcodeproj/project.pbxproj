@@ -7,11 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		255BA539271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 255BA537271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp */; };
+		255BA53C2710272C00F9EF17 /* MSMeshletBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 255BA53A2710272C00F9EF17 /* MSMeshletBuilder.cpp */; };
 		25C5011327056D060078C934 /* MeshClusterBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011127056D060078C934 /* MeshClusterBuilder.cpp */; };
 		25C5011927058D2B0078C934 /* MeshCluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011727058D2B0078C934 /* MeshCluster.cpp */; };
+		25C5011D270FEF530078C934 /* DyLibEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011C270FEF530078C934 /* DyLibEntry.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		255BA537271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UEMetisMeshClusterBuilder.cpp; sourceTree = "<group>"; };
+		255BA538271020DA00F9EF17 /* UEMetisMeshClusterBuilder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UEMetisMeshClusterBuilder.hpp; sourceTree = "<group>"; };
+		255BA53A2710272C00F9EF17 /* MSMeshletBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MSMeshletBuilder.cpp; sourceTree = "<group>"; };
+		255BA53B2710272C00F9EF17 /* MSMeshletBuilder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MSMeshletBuilder.hpp; sourceTree = "<group>"; };
 		25C5010727056CD40078C934 /* MeshClusterBuilder.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeshClusterBuilder.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C5010A27056CD40078C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C5011127056D060078C934 /* MeshClusterBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MeshClusterBuilder.cpp; sourceTree = "<group>"; };
@@ -21,6 +28,8 @@
 		25C5011727058D2B0078C934 /* MeshCluster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MeshCluster.cpp; sourceTree = "<group>"; };
 		25C5011827058D2B0078C934 /* MeshCluster.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MeshCluster.hpp; sourceTree = "<group>"; };
 		25C5011A27058DFC0078C934 /* TypeDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeDef.h; sourceTree = "<group>"; };
+		25C5011B270FEF0A0078C934 /* IUnityInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityInterface.h; sourceTree = "<group>"; };
+		25C5011C270FEF530078C934 /* DyLibEntry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DyLibEntry.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +71,8 @@
 		25C5011027056CF50078C934 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				25C5011C270FEF530078C934 /* DyLibEntry.cpp */,
+				25C5011B270FEF0A0078C934 /* IUnityInterface.h */,
 				25C5011427056D4D0078C934 /* Vector3.h */,
 				25C5011127056D060078C934 /* MeshClusterBuilder.cpp */,
 				25C5011227056D060078C934 /* MeshClusterBuilder.hpp */,
@@ -69,6 +80,10 @@
 				25C5011727058D2B0078C934 /* MeshCluster.cpp */,
 				25C5011827058D2B0078C934 /* MeshCluster.hpp */,
 				25C5011A27058DFC0078C934 /* TypeDef.h */,
+				255BA537271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp */,
+				255BA538271020DA00F9EF17 /* UEMetisMeshClusterBuilder.hpp */,
+				255BA53A2710272C00F9EF17 /* MSMeshletBuilder.cpp */,
+				255BA53B2710272C00F9EF17 /* MSMeshletBuilder.hpp */,
 			);
 			name = Source;
 			path = ../../../Source;
@@ -140,6 +155,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				255BA539271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp in Sources */,
+				25C5011D270FEF530078C934 /* DyLibEntry.cpp in Sources */,
+				255BA53C2710272C00F9EF17 /* MSMeshletBuilder.cpp in Sources */,
 				25C5011327056D060078C934 /* MeshClusterBuilder.cpp in Sources */,
 				25C5011927058D2B0078C934 /* MeshCluster.cpp in Sources */,
 			);

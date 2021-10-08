@@ -14,17 +14,14 @@
 #include "TypeDef.h"
 #include "MeshCluster.hpp"
 
-enum BuilderType { eUE_Metis, eMS_Meshlet };
-
 class MeshClusterBuilder
 {
 public:
     MeshClusterBuilder();
     ~MeshClusterBuilder();
     
-    template<class IndexType>
-    void Build(BuilderType eBuildType, const Vector3f* pVertexData, const UInt32 nVertexDataCount, const UInt32* pIndexData, const UInt32 nIndexDataCount, const MinMaxAABB bounds, int& nClusterCount, MeshCluster** pMeshCluster);
-private:
+    void SetClusterSize(int nClusterSize);
+protected:
     int m_nClusterSize;
 };
 

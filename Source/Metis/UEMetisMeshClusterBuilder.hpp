@@ -18,7 +18,7 @@ public:
     UEMetisMeshClusterBuilder();
     ~UEMetisMeshClusterBuilder();
     template<class IndexType>
-    void Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const UInt32* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int& nClusterCount, MeshCluster** pMeshCluster);
+    void Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int& nClusterCount, MeshCluster** pMeshCluster);
 };
 
 #endif /* UEMetisMeshClusterBuilder_hpp */

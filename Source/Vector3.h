@@ -11,9 +11,11 @@
 class Vector3f
 {
 public:
-    float m_fX;
-    float m_fY;
-    float m_fZ;
+    float x;
+    float y;
+    float z;
+    
+    bool operator==(const Vector3f& v) const { return x == v.x && y == v.y && z == v.z; }
 };
 
 #endif /* Vector3_h */

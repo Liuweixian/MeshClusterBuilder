@@ -33,17 +33,19 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API RegisterUnityLogCallb
     s_UnityLogCallback = cb;
 }
 
-extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API BuildCluster(BuilderType eBuildType, const Vector3f* pVertexData, const UInt32 nVertexDataCount, const UInt32* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int& nClusterCount, MeshCluster** pMeshCluster)
+extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API BuildCluster(BuilderType eBuildType, const UInt32 nClusterSize, const Vector3f* pVertexData, const UInt32 nVertexDataCount, const UInt32* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int& nClusterCount, MeshCluster** pMeshCluster)
 {
     s_UnityLogCallback("Start Building Cluster...");
     if (eBuildType == eUE_Metis)
     {
         UEMetisMeshClusterBuilder metisBuilder;
+        metisBuilder.SetClusterSize(nClusterSize);
         metisBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, nClusterCount, pMeshCluster);
     }
     else if (eBuildType == eMS_Meshlet)
     {
         MSMeshletBuilder meshletBuilder;
+        meshletBuilder.SetClusterSize(nClusterSize);
         meshletBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, nClusterCount, pMeshCluster);
     }
     else

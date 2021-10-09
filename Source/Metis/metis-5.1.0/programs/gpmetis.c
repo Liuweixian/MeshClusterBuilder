@@ -154,7 +154,7 @@ void GPPrintInfo(params_t *params, graph_t *graph)
 
   printf("******************************************************************************\n");
   printf("%s", METISTITLE);
-  printf(" (HEAD: %s, Built on: %s, %s)\n", SVNINFO, __DATE__, __TIME__);
+  //printf(" (HEAD: %s, Built on: %s, %s)\n", SVNINFO, __DATE__, __TIME__);
   printf(" size of idx_t: %zubits, real_t: %zubits, idx_t *: %zubits\n", 
       8*sizeof(idx_t), 8*sizeof(real_t), 8*sizeof(idx_t *));
   printf("\n");

@@ -20,8 +20,19 @@ public:
 class MinMaxAABB
 {
 public:
+    explicit MinMaxAABB(const AABB& aabb) { FromAABB(aabb); }
     Vector3f m_Min;
     Vector3f m_Max;
+    const Vector3f& GetMin() const { return m_Min; }
+    const Vector3f& GetMax() const { return m_Max; }
+private:
+    void FromAABB(const AABB& inAABB);
 };
+
+inline void MinMaxAABB::FromAABB(const AABB& inAABB)
+{
+    m_Min = inAABB.m_Center - inAABB.m_Extent;
+    m_Max = inAABB.m_Center + inAABB.m_Extent;
+}
 
 #endif /* AABB_h */

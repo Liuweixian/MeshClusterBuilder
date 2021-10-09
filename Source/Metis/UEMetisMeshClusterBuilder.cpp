@@ -6,9 +6,12 @@
 //
 
 #include "UEMetisMeshClusterBuilder.hpp"
+#include "DisjointSet.h"
 #include <map>
 #include <vector>
 #include <algorithm>
+#include "GraphPartitioner.hpp"
+
 using namespace std;
 
 UEMetisMeshClusterBuilder::UEMetisMeshClusterBuilder()
@@ -73,7 +76,7 @@ inline UInt32 HashPosition(const Vector3f& position)
 }
 
 template<class IndexType>
-void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int& nClusterCount, MeshCluster** pMeshCluster)
+void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const MinMaxAABB bounds, int& nClusterCount, MeshCluster** pMeshCluster)
 {
     typedef std::multimap<UInt32, UInt32> EdgeHashTable;
     EdgeHashTable edgeHash;
@@ -150,8 +153,8 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
         }
     }
     
-    /*DisjointSet set(nIndexDataCount / 3);
-    for (UInt32 edgeIndex = 0, num = sharedEdges.size();edgeIndex < num; edgeIndex++)
+    DisjointSet set(nIndexDataCount / 3);
+    for (UInt32 edgeIndex = 0, num = sharedEdges.size(); edgeIndex < num; edgeIndex++)
     {
         UInt32 otherEdgeIndex = sharedEdges[edgeIndex];
         if (otherEdgeIndex != ~0u)
@@ -173,19 +176,20 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
             }
         }
     }
+    
     UInt32 triangleCount = nIndexDataCount / 3;
     GraphPartitioner graphPartitioner(triangleCount);
     {
-        auto GetCenter = [&vertex, &indexBuffer](UInt32 TriIndex)
+        auto GetCenter = [&pVertexData, &pIndexData](UInt32 TriIndex)
         {
             Vector3f center;
-            center = vertex[indexBuffer[TriIndex * 3 + 0]];
-            center += vertex[indexBuffer[TriIndex * 3 + 1]];
-            center += vertex[indexBuffer[TriIndex * 3 + 2]];
+            center = pVertexData[pIndexData[TriIndex * 3 + 0]];
+            center += pVertexData[pIndexData[TriIndex * 3 + 1]];
+            center += pVertexData[pIndexData[TriIndex * 3 + 2]];
             return center * (1.0f / 3.0f);
         };
         graphPartitioner.BuildLocalityLinks(set, bounds, GetCenter);
-        auto *graph = graphPartitioner.NewGraph(indexBufferCount);
+        auto *graph = graphPartitioner.NewGraph(nIndexDataCount);
         for (UInt32 i = 0; i < triangleCount; i++)
         {
             graph->xadj[i] = graph->adjncy.size();
@@ -201,14 +205,13 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
             graphPartitioner.AddLocalityLinks(graph, triIndex, 1);
         }
         graph->xadj[triangleCount] = graph->adjncy.size();
-        graphPartitioner.PartitionStrict(graph, ClusterSize - 4, ClusterSize, true);
-        DebugAssert(graphPartitioner.m_ranges.size());
+        graphPartitioner.PartitionStrict(graph, m_nClusterSize - 4, m_nClusterSize, true);
+        assert(graphPartitioner.m_ranges.size());
     }
-    clusterList.resize_initialized(graphPartitioner.m_ranges.size());
+    /*clusterList.resize_initialized(graphPartitioner.m_ranges.size());
     for (int i = 0; i != graphPartitioner.m_ranges.size(); ++i)
     {
-        const GraphPartitioner::Range
-            & range = graphPartitioner.m_ranges[i];
+        const GraphPartitioner::Range& range = graphPartitioner.m_ranges[i];
         clusterList[i].Init<IndexType>(range.begin,
             range.end,
             graphPartitioner.m_indexes,
@@ -216,4 +219,4 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
     }*/
 }
 
-template void UEMetisMeshClusterBuilder::Build<UInt32>(const Vector3f *pVertexData, const UInt32 nVertexDataCount, const UInt32 *pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int &nClusterCount, MeshCluster **pMeshCluster);
+template void UEMetisMeshClusterBuilder::Build<UInt32>(const Vector3f *pVertexData, const UInt32 nVertexDataCount, const UInt32 *pIndexData, const UInt32 nIndexDataCount, const MinMaxAABB bounds, int &nClusterCount, MeshCluster **pMeshCluster);

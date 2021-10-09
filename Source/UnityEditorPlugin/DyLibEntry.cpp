@@ -40,7 +40,8 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API BuildCluster(BuilderT
     {
         UEMetisMeshClusterBuilder metisBuilder;
         metisBuilder.SetClusterSize(nClusterSize);
-        metisBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, nClusterCount, pMeshCluster);
+        MinMaxAABB minMaxAABB(bounds);
+        metisBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, minMaxAABB, nClusterCount, pMeshCluster);
     }
     else if (eBuildType == eMS_Meshlet)
     {

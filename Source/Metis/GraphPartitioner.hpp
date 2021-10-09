@@ -159,7 +159,7 @@ void GraphPartitioner::BuildLocalityLinks(DisjointSet& set, const MinMaxAABB& bo
             UInt32 islandID = set[index];
             Vector3f center = GetCenterFunc(index);
             UInt32 closestIndex[3] = { ~0u, ~0u, ~0u };
-            float  closestDist2[3] = { FLT_MAX, FLT_MAX, FLT_MAX };
+            float  closestDist2[3] = { __FLT_MAX__, __FLT_MAX__, __FLT_MAX__ }; 
             for (int direction = 0; direction < 2; direction++)
             {
                 UInt32 limit = direction ? m_numElements - 1 : 0;

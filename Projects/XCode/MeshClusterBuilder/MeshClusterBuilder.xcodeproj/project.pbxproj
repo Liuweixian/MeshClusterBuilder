@@ -10,111 +10,7 @@
 		255BA539271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 255BA537271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp */; };
 		255BA53C2710272C00F9EF17 /* MSMeshletBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 255BA53A2710272C00F9EF17 /* MSMeshletBuilder.cpp */; };
 		255BA54327104B4300F9EF17 /* GraphPartitioner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 255BA54127104B4300F9EF17 /* GraphPartitioner.cpp */; };
-		255BA5D927104BA100F9EF17 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA54527104BA100F9EF17 /* CMakeLists.txt */; };
-		255BA5DA27104BA100F9EF17 /* Changelog in Resources */ = {isa = PBXBuildFile; fileRef = 255BA54627104BA100F9EF17 /* Changelog */; };
-		255BA5DB27104BA100F9EF17 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 255BA54727104BA100F9EF17 /* Makefile */; };
-		255BA5DC27104BA100F9EF17 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA54927104BA100F9EF17 /* CMakeLists.txt */; };
-		255BA5DD27104BA100F9EF17 /* BUILD-Windows.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA54B27104BA100F9EF17 /* BUILD-Windows.txt */; };
-		255BA5DE27104BA100F9EF17 /* vsgen.bat in Resources */ = {isa = PBXBuildFile; fileRef = 255BA54C27104BA100F9EF17 /* vsgen.bat */; };
-		255BA5DF27104BA100F9EF17 /* Install.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA54D27104BA100F9EF17 /* Install.txt */; };
-		255BA5E027104BA100F9EF17 /* kwayrefine.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55027104BA100F9EF17 /* kwayrefine.c */; };
-		255BA5E127104BA100F9EF17 /* mincover.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55127104BA100F9EF17 /* mincover.c */; };
-		255BA5E227104BA100F9EF17 /* bucketsort.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55227104BA100F9EF17 /* bucketsort.c */; };
-		255BA5E327104BA100F9EF17 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA55427104BA100F9EF17 /* CMakeLists.txt */; };
-		255BA5E427104BA100F9EF17 /* parmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55527104BA100F9EF17 /* parmetis.c */; };
-		255BA5E527104BA100F9EF17 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55627104BA100F9EF17 /* util.c */; };
-		255BA5E627104BA100F9EF17 /* kmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55827104BA100F9EF17 /* kmetis.c */; };
-		255BA5E727104BA100F9EF17 /* meshpart.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55927104BA100F9EF17 /* meshpart.c */; };
-		255BA5E827104BA100F9EF17 /* compress.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55A27104BA100F9EF17 /* compress.c */; };
-		255BA5E927104BA100F9EF17 /* gklib.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55B27104BA100F9EF17 /* gklib.c */; };
-		255BA5EA27104BA100F9EF17 /* auxapi.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55C27104BA100F9EF17 /* auxapi.c */; };
-		255BA5EB27104BA100F9EF17 /* separator.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55D27104BA100F9EF17 /* separator.c */; };
-		255BA5EC27104BA100F9EF17 /* frename.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55E27104BA100F9EF17 /* frename.c */; };
-		255BA5ED27104BA100F9EF17 /* mcutil.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA55F27104BA100F9EF17 /* mcutil.c */; };
-		255BA5EE27104BA100F9EF17 /* ometis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56027104BA100F9EF17 /* ometis.c */; };
-		255BA5EF27104BA100F9EF17 /* wspace.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56127104BA100F9EF17 /* wspace.c */; };
-		255BA5F027104BA100F9EF17 /* sfm.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56227104BA100F9EF17 /* sfm.c */; };
-		255BA5F127104BA100F9EF17 /* debug.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56527104BA100F9EF17 /* debug.c */; };
-		255BA5F227104BA100F9EF17 /* balance.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56627104BA100F9EF17 /* balance.c */; };
-		255BA5F327104BA100F9EF17 /* pmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56727104BA100F9EF17 /* pmetis.c */; };
-		255BA5F427104BA100F9EF17 /* mmd.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56827104BA100F9EF17 /* mmd.c */; };
-		255BA5F527104BA100F9EF17 /* refine.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56927104BA100F9EF17 /* refine.c */; };
-		255BA5F627104BA100F9EF17 /* contig.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56A27104BA100F9EF17 /* contig.c */; };
-		255BA5F727104BA100F9EF17 /* coarsen.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56D27104BA100F9EF17 /* coarsen.c */; };
-		255BA5F827104BA100F9EF17 /* kwayfm.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA56F27104BA100F9EF17 /* kwayfm.c */; };
-		255BA5F927104BA100F9EF17 /* stat.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57027104BA100F9EF17 /* stat.c */; };
-		255BA5FA27104BA100F9EF17 /* checkgraph.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57127104BA100F9EF17 /* checkgraph.c */; };
-		255BA5FB27104BA100F9EF17 /* timing.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57227104BA100F9EF17 /* timing.c */; };
-		255BA5FC27104BA100F9EF17 /* fm.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57327104BA100F9EF17 /* fm.c */; };
-		255BA5FD27104BA100F9EF17 /* fortran.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57427104BA100F9EF17 /* fortran.c */; };
-		255BA5FE27104BA100F9EF17 /* initpart.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57527104BA100F9EF17 /* initpart.c */; };
-		255BA5FF27104BA100F9EF17 /* graph.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57627104BA100F9EF17 /* graph.c */; };
-		255BA60027104BA100F9EF17 /* srefine.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57727104BA100F9EF17 /* srefine.c */; };
-		255BA60127104BA100F9EF17 /* mesh.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57827104BA100F9EF17 /* mesh.c */; };
-		255BA60227104BA100F9EF17 /* options.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57A27104BA100F9EF17 /* options.c */; };
-		255BA60327104BA100F9EF17 /* minconn.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA57B27104BA100F9EF17 /* minconn.c */; };
-		255BA60427104BA100F9EF17 /* BUILD.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA57C27104BA100F9EF17 /* BUILD.txt */; };
-		255BA60527104BA100F9EF17 /* htable.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58027104BA100F9EF17 /* htable.c */; };
-		255BA60627104BA100F9EF17 /* itemsets.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58127104BA100F9EF17 /* itemsets.c */; };
-		255BA60727104BA100F9EF17 /* memory.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58227104BA100F9EF17 /* memory.c */; };
-		255BA60827104BA100F9EF17 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA58327104BA100F9EF17 /* CMakeLists.txt */; };
-		255BA60927104BA100F9EF17 /* gkregex.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58427104BA100F9EF17 /* gkregex.c */; };
-		255BA60A27104BA100F9EF17 /* util.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58527104BA100F9EF17 /* util.c */; };
-		255BA60B27104BA100F9EF17 /* strings.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58727104BA100F9EF17 /* strings.c */; };
-		255BA60C27104BA100F9EF17 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA58827104BA100F9EF17 /* CMakeLists.txt */; };
-		255BA60D27104BA100F9EF17 /* gkgraph.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58927104BA100F9EF17 /* gkgraph.c */; };
-		255BA60E27104BA100F9EF17 /* Makefile.in.old in Resources */ = {isa = PBXBuildFile; fileRef = 255BA58A27104BA100F9EF17 /* Makefile.in.old */; };
-		255BA60F27104BA100F9EF17 /* fis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58B27104BA100F9EF17 /* fis.c */; };
-		255BA61027104BA100F9EF17 /* gksort.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58C27104BA100F9EF17 /* gksort.c */; };
-		255BA61127104BA100F9EF17 /* Makefile.old in Resources */ = {isa = PBXBuildFile; fileRef = 255BA58D27104BA100F9EF17 /* Makefile.old */; };
-		255BA61227104BA100F9EF17 /* rw.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58E27104BA100F9EF17 /* rw.c */; };
-		255BA61327104BA100F9EF17 /* omp.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA58F27104BA100F9EF17 /* omp.c */; };
-		255BA61427104BA100F9EF17 /* GKlibSystem.cmake in Resources */ = {isa = PBXBuildFile; fileRef = 255BA59027104BA100F9EF17 /* GKlibSystem.cmake */; };
-		255BA61527104BA100F9EF17 /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59127104BA100F9EF17 /* io.c */; };
-		255BA61627104BA100F9EF17 /* fkvkselect.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59227104BA100F9EF17 /* fkvkselect.c */; };
-		255BA61727104BA100F9EF17 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59327104BA100F9EF17 /* Makefile */; };
-		255BA61827104BA100F9EF17 /* sort.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59427104BA100F9EF17 /* sort.c */; };
-		255BA61927104BA100F9EF17 /* evaluate.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59527104BA100F9EF17 /* evaluate.c */; };
-		255BA61A27104BA100F9EF17 /* pqueue.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59827104BA100F9EF17 /* pqueue.c */; };
-		255BA61B27104BA100F9EF17 /* string.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59C27104BA100F9EF17 /* string.c */; };
-		255BA61C27104BA100F9EF17 /* random.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59D27104BA100F9EF17 /* random.c */; };
-		255BA61D27104BA100F9EF17 /* fs.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA59E27104BA100F9EF17 /* fs.c */; };
-		255BA61E27104BA100F9EF17 /* BUILD.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA59F27104BA100F9EF17 /* BUILD.txt */; };
-		255BA61F27104BA100F9EF17 /* pdb.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5A027104BA100F9EF17 /* pdb.c */; };
-		255BA62027104BA100F9EF17 /* csr.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5A327104BA100F9EF17 /* csr.c */; };
-		255BA62127104BA100F9EF17 /* timers.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5A627104BA100F9EF17 /* timers.c */; };
-		255BA62227104BA100F9EF17 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5A727104BA100F9EF17 /* error.c */; };
-		255BA62327104BA100F9EF17 /* seq.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5AB27104BA100F9EF17 /* seq.c */; };
-		255BA62427104BA100F9EF17 /* b64.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5AD27104BA100F9EF17 /* b64.c */; };
-		255BA62527104BA100F9EF17 /* mcore.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5AE27104BA100F9EF17 /* mcore.c */; };
-		255BA62627104BA100F9EF17 /* check_thread_storage.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5B127104BA100F9EF17 /* check_thread_storage.c */; };
-		255BA62727104BA100F9EF17 /* graph.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5B227104BA100F9EF17 /* graph.c */; };
-		255BA62827104BA100F9EF17 /* blas.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5B327104BA100F9EF17 /* blas.c */; };
-		255BA62927104BA100F9EF17 /* getopt.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5B427104BA100F9EF17 /* getopt.c */; };
-		255BA62A27104BA100F9EF17 /* tokenizer.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5B727104BA100F9EF17 /* tokenizer.c */; };
-		255BA62B27104BA100F9EF17 /* rw.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5B927104BA100F9EF17 /* rw.c */; };
-		255BA62C27104BA100F9EF17 /* cmdline_mpmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5BC27104BA100F9EF17 /* cmdline_mpmetis.c */; };
-		255BA62D27104BA100F9EF17 /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5BE27104BA100F9EF17 /* CMakeLists.txt */; };
-		255BA62E27104BA100F9EF17 /* io.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5C027104BA100F9EF17 /* io.c */; };
-		255BA62F27104BA100F9EF17 /* cmdline_gpmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5C127104BA100F9EF17 /* cmdline_gpmetis.c */; };
-		255BA63027104BA100F9EF17 /* cmdline_m2gmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5C227104BA100F9EF17 /* cmdline_m2gmetis.c */; };
-		255BA63127104BA100F9EF17 /* cmdline_ndmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5C327104BA100F9EF17 /* cmdline_ndmetis.c */; };
-		255BA63227104BA100F9EF17 /* m2gmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5C427104BA100F9EF17 /* m2gmetis.c */; };
-		255BA63327104BA100F9EF17 /* mpmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5C627104BA100F9EF17 /* mpmetis.c */; };
-		255BA63427104BA100F9EF17 /* cmpfillin.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5C727104BA100F9EF17 /* cmpfillin.c */; };
-		255BA63527104BA100F9EF17 /* graphchk.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5C927104BA100F9EF17 /* graphchk.c */; };
-		255BA63627104BA100F9EF17 /* stat.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5CA27104BA100F9EF17 /* stat.c */; };
-		255BA63727104BA100F9EF17 /* gpmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5CB27104BA100F9EF17 /* gpmetis.c */; };
-		255BA63827104BA100F9EF17 /* smbfactor.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5CC27104BA100F9EF17 /* smbfactor.c */; };
-		255BA63927104BA100F9EF17 /* ndmetis.c in Sources */ = {isa = PBXBuildFile; fileRef = 255BA5CD27104BA100F9EF17 /* ndmetis.c */; };
-		255BA63A27104BA100F9EF17 /* manual.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5CF27104BA100F9EF17 /* manual.pdf */; };
-		255BA63B27104BA100F9EF17 /* metis.mesh in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5D127104BA100F9EF17 /* metis.mesh */; };
-		255BA63C27104BA100F9EF17 /* test.mgraph in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5D227104BA100F9EF17 /* test.mgraph */; };
-		255BA63D27104BA100F9EF17 /* copter2.graph in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5D327104BA100F9EF17 /* copter2.graph */; };
-		255BA63E27104BA100F9EF17 /* 4elt.graph in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5D427104BA100F9EF17 /* 4elt.graph */; };
-		255BA63F27104BA100F9EF17 /* mdual.graph in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5D527104BA100F9EF17 /* mdual.graph */; };
-		255BA64027104BA100F9EF17 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5D627104BA100F9EF17 /* README */; };
-		255BA64127104BA100F9EF17 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 255BA5D827104BA100F9EF17 /* LICENSE.txt */; };
+		255BA64327116A2A00F9EF17 /* libmetis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 255BA64227116A2A00F9EF17 /* libmetis.a */; };
 		25C5011327056D060078C934 /* MeshClusterBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011127056D060078C934 /* MeshClusterBuilder.cpp */; };
 		25C5011927058D2B0078C934 /* MeshCluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011727058D2B0078C934 /* MeshCluster.cpp */; };
 		25C5011D270FEF530078C934 /* DyLibEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011C270FEF530078C934 /* DyLibEntry.cpp */; };
@@ -128,145 +24,8 @@
 		255BA5402710415F00F9EF17 /* DisjointSet.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisjointSet.h; sourceTree = "<group>"; };
 		255BA54127104B4300F9EF17 /* GraphPartitioner.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GraphPartitioner.cpp; sourceTree = "<group>"; };
 		255BA54227104B4300F9EF17 /* GraphPartitioner.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GraphPartitioner.hpp; sourceTree = "<group>"; };
-		255BA54527104BA100F9EF17 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		255BA54627104BA100F9EF17 /* Changelog */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Changelog; sourceTree = "<group>"; };
-		255BA54727104BA100F9EF17 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		255BA54927104BA100F9EF17 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		255BA54A27104BA100F9EF17 /* metis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metis.h; sourceTree = "<group>"; };
-		255BA54B27104BA100F9EF17 /* BUILD-Windows.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "BUILD-Windows.txt"; sourceTree = "<group>"; };
-		255BA54C27104BA100F9EF17 /* vsgen.bat */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = vsgen.bat; sourceTree = "<group>"; };
-		255BA54D27104BA100F9EF17 /* Install.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Install.txt; sourceTree = "<group>"; };
-		255BA54F27104BA100F9EF17 /* stdheaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stdheaders.h; sourceTree = "<group>"; };
-		255BA55027104BA100F9EF17 /* kwayrefine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kwayrefine.c; sourceTree = "<group>"; };
-		255BA55127104BA100F9EF17 /* mincover.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mincover.c; sourceTree = "<group>"; };
-		255BA55227104BA100F9EF17 /* bucketsort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = bucketsort.c; sourceTree = "<group>"; };
-		255BA55327104BA100F9EF17 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
-		255BA55427104BA100F9EF17 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		255BA55527104BA100F9EF17 /* parmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = parmetis.c; sourceTree = "<group>"; };
-		255BA55627104BA100F9EF17 /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
-		255BA55727104BA100F9EF17 /* proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proto.h; sourceTree = "<group>"; };
-		255BA55827104BA100F9EF17 /* kmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kmetis.c; sourceTree = "<group>"; };
-		255BA55927104BA100F9EF17 /* meshpart.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = meshpart.c; sourceTree = "<group>"; };
-		255BA55A27104BA100F9EF17 /* compress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = compress.c; sourceTree = "<group>"; };
-		255BA55B27104BA100F9EF17 /* gklib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gklib.c; sourceTree = "<group>"; };
-		255BA55C27104BA100F9EF17 /* auxapi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = auxapi.c; sourceTree = "<group>"; };
-		255BA55D27104BA100F9EF17 /* separator.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = separator.c; sourceTree = "<group>"; };
-		255BA55E27104BA100F9EF17 /* frename.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = frename.c; sourceTree = "<group>"; };
-		255BA55F27104BA100F9EF17 /* mcutil.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mcutil.c; sourceTree = "<group>"; };
-		255BA56027104BA100F9EF17 /* ometis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ometis.c; sourceTree = "<group>"; };
-		255BA56127104BA100F9EF17 /* wspace.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = wspace.c; sourceTree = "<group>"; };
-		255BA56227104BA100F9EF17 /* sfm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sfm.c; sourceTree = "<group>"; };
-		255BA56327104BA100F9EF17 /* struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = struct.h; sourceTree = "<group>"; };
-		255BA56427104BA100F9EF17 /* gklib_rename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gklib_rename.h; sourceTree = "<group>"; };
-		255BA56527104BA100F9EF17 /* debug.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = debug.c; sourceTree = "<group>"; };
-		255BA56627104BA100F9EF17 /* balance.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = balance.c; sourceTree = "<group>"; };
-		255BA56727104BA100F9EF17 /* pmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pmetis.c; sourceTree = "<group>"; };
-		255BA56827104BA100F9EF17 /* mmd.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mmd.c; sourceTree = "<group>"; };
-		255BA56927104BA100F9EF17 /* refine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = refine.c; sourceTree = "<group>"; };
-		255BA56A27104BA100F9EF17 /* contig.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = contig.c; sourceTree = "<group>"; };
-		255BA56B27104BA100F9EF17 /* macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = macros.h; sourceTree = "<group>"; };
-		255BA56C27104BA100F9EF17 /* rename.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = rename.h; sourceTree = "<group>"; };
-		255BA56D27104BA100F9EF17 /* coarsen.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = coarsen.c; sourceTree = "<group>"; };
-		255BA56E27104BA100F9EF17 /* gklib_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gklib_defs.h; sourceTree = "<group>"; };
-		255BA56F27104BA100F9EF17 /* kwayfm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = kwayfm.c; sourceTree = "<group>"; };
-		255BA57027104BA100F9EF17 /* stat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stat.c; sourceTree = "<group>"; };
-		255BA57127104BA100F9EF17 /* checkgraph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = checkgraph.c; sourceTree = "<group>"; };
-		255BA57227104BA100F9EF17 /* timing.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timing.c; sourceTree = "<group>"; };
-		255BA57327104BA100F9EF17 /* fm.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fm.c; sourceTree = "<group>"; };
-		255BA57427104BA100F9EF17 /* fortran.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fortran.c; sourceTree = "<group>"; };
-		255BA57527104BA100F9EF17 /* initpart.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = initpart.c; sourceTree = "<group>"; };
-		255BA57627104BA100F9EF17 /* graph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = graph.c; sourceTree = "<group>"; };
-		255BA57727104BA100F9EF17 /* srefine.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = srefine.c; sourceTree = "<group>"; };
-		255BA57827104BA100F9EF17 /* mesh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mesh.c; sourceTree = "<group>"; };
-		255BA57927104BA100F9EF17 /* metislib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metislib.h; sourceTree = "<group>"; };
-		255BA57A27104BA100F9EF17 /* options.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = options.c; sourceTree = "<group>"; };
-		255BA57B27104BA100F9EF17 /* minconn.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = minconn.c; sourceTree = "<group>"; };
-		255BA57C27104BA100F9EF17 /* BUILD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BUILD.txt; sourceTree = "<group>"; };
-		255BA57E27104BA100F9EF17 /* ms_stat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ms_stat.h; sourceTree = "<group>"; };
-		255BA57F27104BA100F9EF17 /* gk_defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_defs.h; sourceTree = "<group>"; };
-		255BA58027104BA100F9EF17 /* htable.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = htable.c; sourceTree = "<group>"; };
-		255BA58127104BA100F9EF17 /* itemsets.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = itemsets.c; sourceTree = "<group>"; };
-		255BA58227104BA100F9EF17 /* memory.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = memory.c; sourceTree = "<group>"; };
-		255BA58327104BA100F9EF17 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		255BA58427104BA100F9EF17 /* gkregex.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gkregex.c; sourceTree = "<group>"; };
-		255BA58527104BA100F9EF17 /* util.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = util.c; sourceTree = "<group>"; };
-		255BA58727104BA100F9EF17 /* strings.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = strings.c; sourceTree = "<group>"; };
-		255BA58827104BA100F9EF17 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		255BA58927104BA100F9EF17 /* gkgraph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gkgraph.c; sourceTree = "<group>"; };
-		255BA58A27104BA100F9EF17 /* Makefile.in.old */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.in.old; sourceTree = "<group>"; };
-		255BA58B27104BA100F9EF17 /* fis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fis.c; sourceTree = "<group>"; };
-		255BA58C27104BA100F9EF17 /* gksort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gksort.c; sourceTree = "<group>"; };
-		255BA58D27104BA100F9EF17 /* Makefile.old */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Makefile.old; sourceTree = "<group>"; };
-		255BA58E27104BA100F9EF17 /* rw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rw.c; sourceTree = "<group>"; };
-		255BA58F27104BA100F9EF17 /* omp.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = omp.c; sourceTree = "<group>"; };
-		255BA59027104BA100F9EF17 /* GKlibSystem.cmake */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GKlibSystem.cmake; sourceTree = "<group>"; };
-		255BA59127104BA100F9EF17 /* io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = io.c; sourceTree = "<group>"; };
-		255BA59227104BA100F9EF17 /* fkvkselect.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fkvkselect.c; sourceTree = "<group>"; };
-		255BA59327104BA100F9EF17 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		255BA59427104BA100F9EF17 /* sort.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sort.c; sourceTree = "<group>"; };
-		255BA59527104BA100F9EF17 /* evaluate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = evaluate.c; sourceTree = "<group>"; };
-		255BA59627104BA100F9EF17 /* gk_externs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_externs.h; sourceTree = "<group>"; };
-		255BA59727104BA100F9EF17 /* gk_mksort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_mksort.h; sourceTree = "<group>"; };
-		255BA59827104BA100F9EF17 /* pqueue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pqueue.c; sourceTree = "<group>"; };
-		255BA59927104BA100F9EF17 /* gk_getopt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_getopt.h; sourceTree = "<group>"; };
-		255BA59A27104BA100F9EF17 /* gk_mkutils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_mkutils.h; sourceTree = "<group>"; };
-		255BA59B27104BA100F9EF17 /* gk_struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_struct.h; sourceTree = "<group>"; };
-		255BA59C27104BA100F9EF17 /* string.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = string.c; sourceTree = "<group>"; };
-		255BA59D27104BA100F9EF17 /* random.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = random.c; sourceTree = "<group>"; };
-		255BA59E27104BA100F9EF17 /* fs.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = fs.c; sourceTree = "<group>"; };
-		255BA59F27104BA100F9EF17 /* BUILD.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BUILD.txt; sourceTree = "<group>"; };
-		255BA5A027104BA100F9EF17 /* pdb.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pdb.c; sourceTree = "<group>"; };
-		255BA5A127104BA100F9EF17 /* gk_macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_macros.h; sourceTree = "<group>"; };
-		255BA5A227104BA100F9EF17 /* gk_proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_proto.h; sourceTree = "<group>"; };
-		255BA5A327104BA100F9EF17 /* csr.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = csr.c; sourceTree = "<group>"; };
-		255BA5A427104BA100F9EF17 /* gk_mkpqueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_mkpqueue.h; sourceTree = "<group>"; };
-		255BA5A527104BA100F9EF17 /* gk_types.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_types.h; sourceTree = "<group>"; };
-		255BA5A627104BA100F9EF17 /* timers.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timers.c; sourceTree = "<group>"; };
-		255BA5A727104BA100F9EF17 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = error.c; sourceTree = "<group>"; };
-		255BA5A827104BA100F9EF17 /* GKlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKlib.h; sourceTree = "<group>"; };
-		255BA5A927104BA100F9EF17 /* ms_inttypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ms_inttypes.h; sourceTree = "<group>"; };
-		255BA5AA27104BA100F9EF17 /* gk_mkrandom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_mkrandom.h; sourceTree = "<group>"; };
-		255BA5AB27104BA100F9EF17 /* seq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = seq.c; sourceTree = "<group>"; };
-		255BA5AC27104BA100F9EF17 /* gkregex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gkregex.h; sourceTree = "<group>"; };
-		255BA5AD27104BA100F9EF17 /* b64.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = b64.c; sourceTree = "<group>"; };
-		255BA5AE27104BA100F9EF17 /* mcore.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mcore.c; sourceTree = "<group>"; };
-		255BA5AF27104BA100F9EF17 /* gk_mkpqueue2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_mkpqueue2.h; sourceTree = "<group>"; };
-		255BA5B127104BA100F9EF17 /* check_thread_storage.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = check_thread_storage.c; sourceTree = "<group>"; };
-		255BA5B227104BA100F9EF17 /* graph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = graph.c; sourceTree = "<group>"; };
-		255BA5B327104BA100F9EF17 /* blas.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = blas.c; sourceTree = "<group>"; };
-		255BA5B427104BA100F9EF17 /* getopt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = getopt.c; sourceTree = "<group>"; };
-		255BA5B527104BA100F9EF17 /* gk_arch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_arch.h; sourceTree = "<group>"; };
-		255BA5B627104BA100F9EF17 /* ms_stdint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ms_stdint.h; sourceTree = "<group>"; };
-		255BA5B727104BA100F9EF17 /* tokenizer.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tokenizer.c; sourceTree = "<group>"; };
-		255BA5B827104BA100F9EF17 /* gk_mkblas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_mkblas.h; sourceTree = "<group>"; };
-		255BA5B927104BA100F9EF17 /* rw.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = rw.c; sourceTree = "<group>"; };
-		255BA5BA27104BA100F9EF17 /* gk_mkmemory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gk_mkmemory.h; sourceTree = "<group>"; };
-		255BA5BC27104BA100F9EF17 /* cmdline_mpmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmdline_mpmetis.c; sourceTree = "<group>"; };
-		255BA5BD27104BA100F9EF17 /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
-		255BA5BE27104BA100F9EF17 /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
-		255BA5BF27104BA100F9EF17 /* proto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = proto.h; sourceTree = "<group>"; };
-		255BA5C027104BA100F9EF17 /* io.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = io.c; sourceTree = "<group>"; };
-		255BA5C127104BA100F9EF17 /* cmdline_gpmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmdline_gpmetis.c; sourceTree = "<group>"; };
-		255BA5C227104BA100F9EF17 /* cmdline_m2gmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmdline_m2gmetis.c; sourceTree = "<group>"; };
-		255BA5C327104BA100F9EF17 /* cmdline_ndmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmdline_ndmetis.c; sourceTree = "<group>"; };
-		255BA5C427104BA100F9EF17 /* m2gmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = m2gmetis.c; sourceTree = "<group>"; };
-		255BA5C527104BA100F9EF17 /* struct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = struct.h; sourceTree = "<group>"; };
-		255BA5C627104BA100F9EF17 /* mpmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mpmetis.c; sourceTree = "<group>"; };
-		255BA5C727104BA100F9EF17 /* cmpfillin.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = cmpfillin.c; sourceTree = "<group>"; };
-		255BA5C827104BA100F9EF17 /* metisbin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metisbin.h; sourceTree = "<group>"; };
-		255BA5C927104BA100F9EF17 /* graphchk.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = graphchk.c; sourceTree = "<group>"; };
-		255BA5CA27104BA100F9EF17 /* stat.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = stat.c; sourceTree = "<group>"; };
-		255BA5CB27104BA100F9EF17 /* gpmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = gpmetis.c; sourceTree = "<group>"; };
-		255BA5CC27104BA100F9EF17 /* smbfactor.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = smbfactor.c; sourceTree = "<group>"; };
-		255BA5CD27104BA100F9EF17 /* ndmetis.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = ndmetis.c; sourceTree = "<group>"; };
-		255BA5CF27104BA100F9EF17 /* manual.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = manual.pdf; sourceTree = "<group>"; };
-		255BA5D127104BA100F9EF17 /* metis.mesh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = metis.mesh; sourceTree = "<group>"; };
-		255BA5D227104BA100F9EF17 /* test.mgraph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = test.mgraph; sourceTree = "<group>"; };
-		255BA5D327104BA100F9EF17 /* copter2.graph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copter2.graph; sourceTree = "<group>"; };
-		255BA5D427104BA100F9EF17 /* 4elt.graph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = 4elt.graph; sourceTree = "<group>"; };
-		255BA5D527104BA100F9EF17 /* mdual.graph */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = mdual.graph; sourceTree = "<group>"; };
-		255BA5D627104BA100F9EF17 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		255BA5D827104BA100F9EF17 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		255BA64227116A2A00F9EF17 /* libmetis.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmetis.a; sourceTree = "<group>"; };
+		255BA64727116AAA00F9EF17 /* metis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metis.h; sourceTree = "<group>"; };
 		25C5010727056CD40078C934 /* MeshClusterBuilder.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeshClusterBuilder.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C5010A27056CD40078C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C5011127056D060078C934 /* MeshClusterBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MeshClusterBuilder.cpp; sourceTree = "<group>"; };
@@ -285,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				255BA64327116A2A00F9EF17 /* libmetis.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,7 +54,7 @@
 		255BA53D271037CD00F9EF17 /* Metis */ = {
 			isa = PBXGroup;
 			children = (
-				255BA54427104BA100F9EF17 /* metis-5.1.0 */,
+				255BA64527116AAA00F9EF17 /* metis-5.1.0 */,
 				255BA537271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp */,
 				255BA538271020DA00F9EF17 /* UEMetisMeshClusterBuilder.hpp */,
 				255BA5402710415F00F9EF17 /* DisjointSet.h */,
@@ -322,227 +82,26 @@
 			path = UnityEditorPlugin;
 			sourceTree = "<group>";
 		};
-		255BA54427104BA100F9EF17 /* metis-5.1.0 */ = {
+		255BA64527116AAA00F9EF17 /* metis-5.1.0 */ = {
 			isa = PBXGroup;
 			children = (
-				255BA54527104BA100F9EF17 /* CMakeLists.txt */,
-				255BA54627104BA100F9EF17 /* Changelog */,
-				255BA54727104BA100F9EF17 /* Makefile */,
-				255BA54827104BA100F9EF17 /* include */,
-				255BA54B27104BA100F9EF17 /* BUILD-Windows.txt */,
-				255BA54C27104BA100F9EF17 /* vsgen.bat */,
-				255BA54D27104BA100F9EF17 /* Install.txt */,
-				255BA54E27104BA100F9EF17 /* libmetis */,
-				255BA57C27104BA100F9EF17 /* BUILD.txt */,
-				255BA57D27104BA100F9EF17 /* GKlib */,
-				255BA5BB27104BA100F9EF17 /* programs */,
-				255BA5CE27104BA100F9EF17 /* manual */,
-				255BA5D027104BA100F9EF17 /* graphs */,
-				255BA5D727104BA100F9EF17 /* build */,
-				255BA5D827104BA100F9EF17 /* LICENSE.txt */,
+				255BA64627116AAA00F9EF17 /* include */,
 			);
 			path = "metis-5.1.0";
 			sourceTree = "<group>";
 		};
-		255BA54827104BA100F9EF17 /* include */ = {
+		255BA64627116AAA00F9EF17 /* include */ = {
 			isa = PBXGroup;
 			children = (
-				255BA54927104BA100F9EF17 /* CMakeLists.txt */,
-				255BA54A27104BA100F9EF17 /* metis.h */,
+				255BA64727116AAA00F9EF17 /* metis.h */,
 			);
 			path = include;
-			sourceTree = "<group>";
-		};
-		255BA54E27104BA100F9EF17 /* libmetis */ = {
-			isa = PBXGroup;
-			children = (
-				255BA54F27104BA100F9EF17 /* stdheaders.h */,
-				255BA55027104BA100F9EF17 /* kwayrefine.c */,
-				255BA55127104BA100F9EF17 /* mincover.c */,
-				255BA55227104BA100F9EF17 /* bucketsort.c */,
-				255BA55327104BA100F9EF17 /* defs.h */,
-				255BA55427104BA100F9EF17 /* CMakeLists.txt */,
-				255BA55527104BA100F9EF17 /* parmetis.c */,
-				255BA55627104BA100F9EF17 /* util.c */,
-				255BA55727104BA100F9EF17 /* proto.h */,
-				255BA55827104BA100F9EF17 /* kmetis.c */,
-				255BA55927104BA100F9EF17 /* meshpart.c */,
-				255BA55A27104BA100F9EF17 /* compress.c */,
-				255BA55B27104BA100F9EF17 /* gklib.c */,
-				255BA55C27104BA100F9EF17 /* auxapi.c */,
-				255BA55D27104BA100F9EF17 /* separator.c */,
-				255BA55E27104BA100F9EF17 /* frename.c */,
-				255BA55F27104BA100F9EF17 /* mcutil.c */,
-				255BA56027104BA100F9EF17 /* ometis.c */,
-				255BA56127104BA100F9EF17 /* wspace.c */,
-				255BA56227104BA100F9EF17 /* sfm.c */,
-				255BA56327104BA100F9EF17 /* struct.h */,
-				255BA56427104BA100F9EF17 /* gklib_rename.h */,
-				255BA56527104BA100F9EF17 /* debug.c */,
-				255BA56627104BA100F9EF17 /* balance.c */,
-				255BA56727104BA100F9EF17 /* pmetis.c */,
-				255BA56827104BA100F9EF17 /* mmd.c */,
-				255BA56927104BA100F9EF17 /* refine.c */,
-				255BA56A27104BA100F9EF17 /* contig.c */,
-				255BA56B27104BA100F9EF17 /* macros.h */,
-				255BA56C27104BA100F9EF17 /* rename.h */,
-				255BA56D27104BA100F9EF17 /* coarsen.c */,
-				255BA56E27104BA100F9EF17 /* gklib_defs.h */,
-				255BA56F27104BA100F9EF17 /* kwayfm.c */,
-				255BA57027104BA100F9EF17 /* stat.c */,
-				255BA57127104BA100F9EF17 /* checkgraph.c */,
-				255BA57227104BA100F9EF17 /* timing.c */,
-				255BA57327104BA100F9EF17 /* fm.c */,
-				255BA57427104BA100F9EF17 /* fortran.c */,
-				255BA57527104BA100F9EF17 /* initpart.c */,
-				255BA57627104BA100F9EF17 /* graph.c */,
-				255BA57727104BA100F9EF17 /* srefine.c */,
-				255BA57827104BA100F9EF17 /* mesh.c */,
-				255BA57927104BA100F9EF17 /* metislib.h */,
-				255BA57A27104BA100F9EF17 /* options.c */,
-				255BA57B27104BA100F9EF17 /* minconn.c */,
-			);
-			path = libmetis;
-			sourceTree = "<group>";
-		};
-		255BA57D27104BA100F9EF17 /* GKlib */ = {
-			isa = PBXGroup;
-			children = (
-				255BA57E27104BA100F9EF17 /* ms_stat.h */,
-				255BA57F27104BA100F9EF17 /* gk_defs.h */,
-				255BA58027104BA100F9EF17 /* htable.c */,
-				255BA58127104BA100F9EF17 /* itemsets.c */,
-				255BA58227104BA100F9EF17 /* memory.c */,
-				255BA58327104BA100F9EF17 /* CMakeLists.txt */,
-				255BA58427104BA100F9EF17 /* gkregex.c */,
-				255BA58527104BA100F9EF17 /* util.c */,
-				255BA58627104BA100F9EF17 /* test */,
-				255BA58F27104BA100F9EF17 /* omp.c */,
-				255BA59027104BA100F9EF17 /* GKlibSystem.cmake */,
-				255BA59127104BA100F9EF17 /* io.c */,
-				255BA59227104BA100F9EF17 /* fkvkselect.c */,
-				255BA59327104BA100F9EF17 /* Makefile */,
-				255BA59427104BA100F9EF17 /* sort.c */,
-				255BA59527104BA100F9EF17 /* evaluate.c */,
-				255BA59627104BA100F9EF17 /* gk_externs.h */,
-				255BA59727104BA100F9EF17 /* gk_mksort.h */,
-				255BA59827104BA100F9EF17 /* pqueue.c */,
-				255BA59927104BA100F9EF17 /* gk_getopt.h */,
-				255BA59A27104BA100F9EF17 /* gk_mkutils.h */,
-				255BA59B27104BA100F9EF17 /* gk_struct.h */,
-				255BA59C27104BA100F9EF17 /* string.c */,
-				255BA59D27104BA100F9EF17 /* random.c */,
-				255BA59E27104BA100F9EF17 /* fs.c */,
-				255BA59F27104BA100F9EF17 /* BUILD.txt */,
-				255BA5A027104BA100F9EF17 /* pdb.c */,
-				255BA5A127104BA100F9EF17 /* gk_macros.h */,
-				255BA5A227104BA100F9EF17 /* gk_proto.h */,
-				255BA5A327104BA100F9EF17 /* csr.c */,
-				255BA5A427104BA100F9EF17 /* gk_mkpqueue.h */,
-				255BA5A527104BA100F9EF17 /* gk_types.h */,
-				255BA5A627104BA100F9EF17 /* timers.c */,
-				255BA5A727104BA100F9EF17 /* error.c */,
-				255BA5A827104BA100F9EF17 /* GKlib.h */,
-				255BA5A927104BA100F9EF17 /* ms_inttypes.h */,
-				255BA5AA27104BA100F9EF17 /* gk_mkrandom.h */,
-				255BA5AB27104BA100F9EF17 /* seq.c */,
-				255BA5AC27104BA100F9EF17 /* gkregex.h */,
-				255BA5AD27104BA100F9EF17 /* b64.c */,
-				255BA5AE27104BA100F9EF17 /* mcore.c */,
-				255BA5AF27104BA100F9EF17 /* gk_mkpqueue2.h */,
-				255BA5B027104BA100F9EF17 /* conf */,
-				255BA5B227104BA100F9EF17 /* graph.c */,
-				255BA5B327104BA100F9EF17 /* blas.c */,
-				255BA5B427104BA100F9EF17 /* getopt.c */,
-				255BA5B527104BA100F9EF17 /* gk_arch.h */,
-				255BA5B627104BA100F9EF17 /* ms_stdint.h */,
-				255BA5B727104BA100F9EF17 /* tokenizer.c */,
-				255BA5B827104BA100F9EF17 /* gk_mkblas.h */,
-				255BA5B927104BA100F9EF17 /* rw.c */,
-				255BA5BA27104BA100F9EF17 /* gk_mkmemory.h */,
-			);
-			path = GKlib;
-			sourceTree = "<group>";
-		};
-		255BA58627104BA100F9EF17 /* test */ = {
-			isa = PBXGroup;
-			children = (
-				255BA58727104BA100F9EF17 /* strings.c */,
-				255BA58827104BA100F9EF17 /* CMakeLists.txt */,
-				255BA58927104BA100F9EF17 /* gkgraph.c */,
-				255BA58A27104BA100F9EF17 /* Makefile.in.old */,
-				255BA58B27104BA100F9EF17 /* fis.c */,
-				255BA58C27104BA100F9EF17 /* gksort.c */,
-				255BA58D27104BA100F9EF17 /* Makefile.old */,
-				255BA58E27104BA100F9EF17 /* rw.c */,
-			);
-			path = test;
-			sourceTree = "<group>";
-		};
-		255BA5B027104BA100F9EF17 /* conf */ = {
-			isa = PBXGroup;
-			children = (
-				255BA5B127104BA100F9EF17 /* check_thread_storage.c */,
-			);
-			path = conf;
-			sourceTree = "<group>";
-		};
-		255BA5BB27104BA100F9EF17 /* programs */ = {
-			isa = PBXGroup;
-			children = (
-				255BA5BC27104BA100F9EF17 /* cmdline_mpmetis.c */,
-				255BA5BD27104BA100F9EF17 /* defs.h */,
-				255BA5BE27104BA100F9EF17 /* CMakeLists.txt */,
-				255BA5BF27104BA100F9EF17 /* proto.h */,
-				255BA5C027104BA100F9EF17 /* io.c */,
-				255BA5C127104BA100F9EF17 /* cmdline_gpmetis.c */,
-				255BA5C227104BA100F9EF17 /* cmdline_m2gmetis.c */,
-				255BA5C327104BA100F9EF17 /* cmdline_ndmetis.c */,
-				255BA5C427104BA100F9EF17 /* m2gmetis.c */,
-				255BA5C527104BA100F9EF17 /* struct.h */,
-				255BA5C627104BA100F9EF17 /* mpmetis.c */,
-				255BA5C727104BA100F9EF17 /* cmpfillin.c */,
-				255BA5C827104BA100F9EF17 /* metisbin.h */,
-				255BA5C927104BA100F9EF17 /* graphchk.c */,
-				255BA5CA27104BA100F9EF17 /* stat.c */,
-				255BA5CB27104BA100F9EF17 /* gpmetis.c */,
-				255BA5CC27104BA100F9EF17 /* smbfactor.c */,
-				255BA5CD27104BA100F9EF17 /* ndmetis.c */,
-			);
-			path = programs;
-			sourceTree = "<group>";
-		};
-		255BA5CE27104BA100F9EF17 /* manual */ = {
-			isa = PBXGroup;
-			children = (
-				255BA5CF27104BA100F9EF17 /* manual.pdf */,
-			);
-			path = manual;
-			sourceTree = "<group>";
-		};
-		255BA5D027104BA100F9EF17 /* graphs */ = {
-			isa = PBXGroup;
-			children = (
-				255BA5D127104BA100F9EF17 /* metis.mesh */,
-				255BA5D227104BA100F9EF17 /* test.mgraph */,
-				255BA5D327104BA100F9EF17 /* copter2.graph */,
-				255BA5D427104BA100F9EF17 /* 4elt.graph */,
-				255BA5D527104BA100F9EF17 /* mdual.graph */,
-				255BA5D627104BA100F9EF17 /* README */,
-			);
-			path = graphs;
-			sourceTree = "<group>";
-		};
-		255BA5D727104BA100F9EF17 /* build */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = build;
 			sourceTree = "<group>";
 		};
 		25C500FE27056CD40078C934 = {
 			isa = PBXGroup;
 			children = (
+				255BA64227116A2A00F9EF17 /* libmetis.a */,
 				25C5011027056CF50078C934 /* Source */,
 				25C5010927056CD40078C934 /* MeshClusterBuilder */,
 				25C5010827056CD40078C934 /* Products */,
@@ -639,29 +198,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				255BA63A27104BA100F9EF17 /* manual.pdf in Resources */,
-				255BA63D27104BA100F9EF17 /* copter2.graph in Resources */,
-				255BA5D927104BA100F9EF17 /* CMakeLists.txt in Resources */,
-				255BA60E27104BA100F9EF17 /* Makefile.in.old in Resources */,
-				255BA63B27104BA100F9EF17 /* metis.mesh in Resources */,
-				255BA63F27104BA100F9EF17 /* mdual.graph in Resources */,
-				255BA5DA27104BA100F9EF17 /* Changelog in Resources */,
-				255BA61427104BA100F9EF17 /* GKlibSystem.cmake in Resources */,
-				255BA5DF27104BA100F9EF17 /* Install.txt in Resources */,
-				255BA5DE27104BA100F9EF17 /* vsgen.bat in Resources */,
-				255BA60C27104BA100F9EF17 /* CMakeLists.txt in Resources */,
-				255BA5E327104BA100F9EF17 /* CMakeLists.txt in Resources */,
-				255BA64027104BA100F9EF17 /* README in Resources */,
-				255BA63E27104BA100F9EF17 /* 4elt.graph in Resources */,
-				255BA5DC27104BA100F9EF17 /* CMakeLists.txt in Resources */,
-				255BA5DD27104BA100F9EF17 /* BUILD-Windows.txt in Resources */,
-				255BA64127104BA100F9EF17 /* LICENSE.txt in Resources */,
-				255BA60427104BA100F9EF17 /* BUILD.txt in Resources */,
-				255BA61E27104BA100F9EF17 /* BUILD.txt in Resources */,
-				255BA60827104BA100F9EF17 /* CMakeLists.txt in Resources */,
-				255BA61127104BA100F9EF17 /* Makefile.old in Resources */,
-				255BA63C27104BA100F9EF17 /* test.mgraph in Resources */,
-				255BA62D27104BA100F9EF17 /* CMakeLists.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -672,94 +208,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				255BA63627104BA100F9EF17 /* stat.c in Sources */,
-				255BA62327104BA100F9EF17 /* seq.c in Sources */,
-				255BA60A27104BA100F9EF17 /* util.c in Sources */,
-				255BA62727104BA100F9EF17 /* graph.c in Sources */,
 				255BA539271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp in Sources */,
-				255BA5E927104BA100F9EF17 /* gklib.c in Sources */,
-				255BA61027104BA100F9EF17 /* gksort.c in Sources */,
-				255BA5F827104BA100F9EF17 /* kwayfm.c in Sources */,
-				255BA60B27104BA100F9EF17 /* strings.c in Sources */,
-				255BA62B27104BA100F9EF17 /* rw.c in Sources */,
-				255BA63827104BA100F9EF17 /* smbfactor.c in Sources */,
-				255BA62227104BA100F9EF17 /* error.c in Sources */,
-				255BA62827104BA100F9EF17 /* blas.c in Sources */,
-				255BA61F27104BA100F9EF17 /* pdb.c in Sources */,
 				25C5011D270FEF530078C934 /* DyLibEntry.cpp in Sources */,
-				255BA60027104BA100F9EF17 /* srefine.c in Sources */,
-				255BA5EC27104BA100F9EF17 /* frename.c in Sources */,
-				255BA5EB27104BA100F9EF17 /* separator.c in Sources */,
-				255BA61627104BA100F9EF17 /* fkvkselect.c in Sources */,
-				255BA5E027104BA100F9EF17 /* kwayrefine.c in Sources */,
-				255BA5FA27104BA100F9EF17 /* checkgraph.c in Sources */,
 				255BA53C2710272C00F9EF17 /* MSMeshletBuilder.cpp in Sources */,
-				255BA63927104BA100F9EF17 /* ndmetis.c in Sources */,
-				255BA5F027104BA100F9EF17 /* sfm.c in Sources */,
-				255BA62427104BA100F9EF17 /* b64.c in Sources */,
-				255BA61227104BA100F9EF17 /* rw.c in Sources */,
-				255BA5F627104BA100F9EF17 /* contig.c in Sources */,
-				255BA5E827104BA100F9EF17 /* compress.c in Sources */,
-				255BA62127104BA100F9EF17 /* timers.c in Sources */,
-				255BA5F427104BA100F9EF17 /* mmd.c in Sources */,
-				255BA62627104BA100F9EF17 /* check_thread_storage.c in Sources */,
-				255BA5F527104BA100F9EF17 /* refine.c in Sources */,
 				25C5011327056D060078C934 /* MeshClusterBuilder.cpp in Sources */,
-				255BA61C27104BA100F9EF17 /* random.c in Sources */,
-				255BA61327104BA100F9EF17 /* omp.c in Sources */,
-				255BA63727104BA100F9EF17 /* gpmetis.c in Sources */,
-				255BA5E727104BA100F9EF17 /* meshpart.c in Sources */,
-				255BA63127104BA100F9EF17 /* cmdline_ndmetis.c in Sources */,
-				255BA5FF27104BA100F9EF17 /* graph.c in Sources */,
-				255BA61B27104BA100F9EF17 /* string.c in Sources */,
-				255BA61827104BA100F9EF17 /* sort.c in Sources */,
-				255BA5EE27104BA100F9EF17 /* ometis.c in Sources */,
-				255BA5F727104BA100F9EF17 /* coarsen.c in Sources */,
-				255BA62027104BA100F9EF17 /* csr.c in Sources */,
-				255BA61527104BA100F9EF17 /* io.c in Sources */,
-				255BA62A27104BA100F9EF17 /* tokenizer.c in Sources */,
-				255BA60127104BA100F9EF17 /* mesh.c in Sources */,
-				255BA5E527104BA100F9EF17 /* util.c in Sources */,
-				255BA60727104BA100F9EF17 /* memory.c in Sources */,
-				255BA63327104BA100F9EF17 /* mpmetis.c in Sources */,
-				255BA5F227104BA100F9EF17 /* balance.c in Sources */,
-				255BA5F927104BA100F9EF17 /* stat.c in Sources */,
-				255BA63027104BA100F9EF17 /* cmdline_m2gmetis.c in Sources */,
-				255BA5E127104BA100F9EF17 /* mincover.c in Sources */,
-				255BA63427104BA100F9EF17 /* cmpfillin.c in Sources */,
-				255BA5FE27104BA100F9EF17 /* initpart.c in Sources */,
-				255BA62E27104BA100F9EF17 /* io.c in Sources */,
-				255BA60927104BA100F9EF17 /* gkregex.c in Sources */,
-				255BA60D27104BA100F9EF17 /* gkgraph.c in Sources */,
 				255BA54327104B4300F9EF17 /* GraphPartitioner.cpp in Sources */,
-				255BA5F127104BA100F9EF17 /* debug.c in Sources */,
-				255BA5E427104BA100F9EF17 /* parmetis.c in Sources */,
-				255BA61927104BA100F9EF17 /* evaluate.c in Sources */,
-				255BA63227104BA100F9EF17 /* m2gmetis.c in Sources */,
-				255BA60F27104BA100F9EF17 /* fis.c in Sources */,
-				255BA5E627104BA100F9EF17 /* kmetis.c in Sources */,
-				255BA62527104BA100F9EF17 /* mcore.c in Sources */,
-				255BA61A27104BA100F9EF17 /* pqueue.c in Sources */,
-				255BA60527104BA100F9EF17 /* htable.c in Sources */,
-				255BA5FC27104BA100F9EF17 /* fm.c in Sources */,
-				255BA5DB27104BA100F9EF17 /* Makefile in Sources */,
-				255BA60327104BA100F9EF17 /* minconn.c in Sources */,
-				255BA61D27104BA100F9EF17 /* fs.c in Sources */,
 				25C5011927058D2B0078C934 /* MeshCluster.cpp in Sources */,
-				255BA5E227104BA100F9EF17 /* bucketsort.c in Sources */,
-				255BA5FD27104BA100F9EF17 /* fortran.c in Sources */,
-				255BA5EA27104BA100F9EF17 /* auxapi.c in Sources */,
-				255BA5F327104BA100F9EF17 /* pmetis.c in Sources */,
-				255BA62C27104BA100F9EF17 /* cmdline_mpmetis.c in Sources */,
-				255BA5EF27104BA100F9EF17 /* wspace.c in Sources */,
-				255BA62927104BA100F9EF17 /* getopt.c in Sources */,
-				255BA62F27104BA100F9EF17 /* cmdline_gpmetis.c in Sources */,
-				255BA5ED27104BA100F9EF17 /* mcutil.c in Sources */,
-				255BA60627104BA100F9EF17 /* itemsets.c in Sources */,
-				255BA5FB27104BA100F9EF17 /* timing.c in Sources */,
-				255BA61727104BA100F9EF17 /* Makefile in Sources */,
-				255BA60227104BA100F9EF17 /* options.c in Sources */,
-				255BA63527104BA100F9EF17 /* graphchk.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -891,6 +345,10 @@
 				);
 				INFOPLIST_FILE = MeshClusterBuilder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rayliu.MeshClusterBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -912,6 +370,10 @@
 				);
 				INFOPLIST_FILE = MeshClusterBuilder/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Bundles";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.rayliu.MeshClusterBuilder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

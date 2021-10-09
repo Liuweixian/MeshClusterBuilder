@@ -89,9 +89,8 @@ inline UInt32 MortonCode3(UInt32 x)
 template< typename GetCenter >
 void GraphPartitioner::BuildLocalityLinks(DisjointSet& set, const MinMaxAABB& bounds, GetCenter& GetCenterFunc)
 {
-    std::vector<UInt32> sortKeys;
-    sortKeys.reserve(m_numElements);
-    m_sortedTo.reserve(m_numElements);
+    std::vector<UInt32> sortKeys(m_numElements);
+    m_sortedTo.resize(m_numElements);
     const bool singleThreaded = m_numElements < 5000;
     for (int index = 0; index != m_numElements; ++index)
     {

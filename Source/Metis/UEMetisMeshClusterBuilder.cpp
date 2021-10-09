@@ -93,10 +93,8 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
         edgeHash.insert(std::make_pair(hash, i));
     }
     
-    std::vector<UInt32> sharedEdges;
-    sharedEdges.reserve(nIndexDataCount);
-    std::vector<UInt32> boundaryEdges;
-    boundaryEdges.reserve(nIndexDataCount);
+    std::vector<UInt32> sharedEdges(nIndexDataCount);
+    std::vector<UInt32> boundaryEdges(nIndexDataCount);
     
     const int numBitsPerDWORD = 32;
     const int numDwords = (nIndexDataCount + numBitsPerDWORD - 1) / numBitsPerDWORD;

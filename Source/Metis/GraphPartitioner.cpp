@@ -12,7 +12,7 @@ GraphPartitioner::GraphPartitioner(UInt32 num) : m_numElements(num)
     m_indexes.reserve(m_numElements);
     for (UInt32 i = 0; i < m_numElements; i++)
     {
-        m_indexes[i] = i;
+        m_indexes.push_back(i);
     }
 }
 

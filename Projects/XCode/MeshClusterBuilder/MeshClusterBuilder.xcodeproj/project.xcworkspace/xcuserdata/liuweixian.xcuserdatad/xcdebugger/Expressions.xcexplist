@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "void UEMetisMeshClusterBuilder::Build&lt;unsigned int&gt;(Vector3f const*, unsigned int, unsigned int const*, unsigned int, MinMaxAABB, int&amp;, MeshCluster**):UEMetisMeshClusterBuilder.cpp">
+         <PersistentStrings>
+            <PersistentString
+               value = "sharedEdges">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

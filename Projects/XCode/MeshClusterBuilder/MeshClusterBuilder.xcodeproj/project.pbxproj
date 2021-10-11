@@ -11,10 +11,24 @@
 		255BA53C2710272C00F9EF17 /* MSMeshletBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 255BA53A2710272C00F9EF17 /* MSMeshletBuilder.cpp */; };
 		255BA54327104B4300F9EF17 /* GraphPartitioner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 255BA54127104B4300F9EF17 /* GraphPartitioner.cpp */; };
 		255BA64327116A2A00F9EF17 /* libmetis.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 255BA64227116A2A00F9EF17 /* libmetis.a */; };
+		255BA64A2711764700F9EF17 /* MeshClusterBuilder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 25C5010727056CD40078C934 /* MeshClusterBuilder.bundle */; };
 		25C5011327056D060078C934 /* MeshClusterBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011127056D060078C934 /* MeshClusterBuilder.cpp */; };
 		25C5011927058D2B0078C934 /* MeshCluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011727058D2B0078C934 /* MeshCluster.cpp */; };
 		25C5011D270FEF530078C934 /* DyLibEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011C270FEF530078C934 /* DyLibEntry.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		255BA6492711758E00F9EF17 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = "/Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Sample/UnityProject/Assets/Plugins";
+			dstSubfolderSpec = 0;
+			files = (
+				255BA64A2711764700F9EF17 /* MeshClusterBuilder.bundle in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		255BA537271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UEMetisMeshClusterBuilder.cpp; sourceTree = "<group>"; };
@@ -152,6 +166,7 @@
 				25C5010327056CD40078C934 /* Sources */,
 				25C5010427056CD40078C934 /* Frameworks */,
 				25C5010527056CD40078C934 /* Resources */,
+				255BA6492711758E00F9EF17 /* CopyFiles */,
 			);
 			buildRules = (
 			);

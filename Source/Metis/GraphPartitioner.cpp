@@ -7,94 +7,100 @@
 
 #include "GraphPartitioner.hpp"
 
-GraphPartitioner::GraphPartitioner(UInt32 num) : m_numElements(num)
+GraphPartitioner::GraphPartitioner(UInt32 num) : m_NumElements(num)
 {
-    m_indexes.reserve(m_numElements);
-    for (UInt32 i = 0; i < m_numElements; i++)
+    m_Indexes.reserve(m_NumElements);
+    for (UInt32 i = 0; i < m_NumElements; i++)
     {
-        m_indexes.push_back(i);
+        m_Indexes.push_back(i);
     }
 }
 
 GraphPartitioner::GraphData* GraphPartitioner::NewGraph(UInt32 adjacencyCount) const
 {
-    adjacencyCount += m_localityLinks.size();
+    adjacencyCount += m_LocalityLinks.size();
     GraphData *graph = new GraphPartitioner::GraphData;
-    graph->offset = 0;
-    graph->count = m_numElements;
-    graph->adjncy.reserve(adjacencyCount);
-    graph->adjncyCost.reserve(adjacencyCount);
-    graph->xadj.reserve(m_numElements + 1);
+    graph->Offset = 0;
+    graph->Num = m_NumElements;
+    graph->Adjacency.reserve(adjacencyCount);
+    graph->AdjacencyCost.reserve(adjacencyCount);
+    graph->AdjacencyOffset.resize(m_NumElements + 1);
     return graph;
 }
 
 void GraphPartitioner::Partition(GraphData* graph, int InMinPartitionSize, int InMaxPartitionSize)
 {
-    m_minPartitionSize = InMinPartitionSize;
-    m_maxPartitionSize = InMaxPartitionSize;
-    const int targetPartitionSize = (m_minPartitionSize + m_maxPartitionSize) / 2;
-    const int targetNumPartitions = (graph->count + targetPartitionSize - 1) / targetPartitionSize;//FMath::DivideAndRoundUp(Graph->Num, TargetPartitionSize);
+    m_MinPartitionSize = InMinPartitionSize;
+    m_MaxPartitionSize = InMaxPartitionSize;
+    const int targetPartitionSize = (m_MinPartitionSize + m_MaxPartitionSize) / 2;
+    const int targetNumPartitions = (graph->Num + targetPartitionSize - 1) / targetPartitionSize;//FMath::DivideAndRoundUp(Graph->Num, TargetPartitionSize);
     if (targetNumPartitions > 1)
     {
-        m_partitionID.insert(m_partitionID.end(), m_numElements, 0);
+        m_PartitionIDs.insert(m_PartitionIDs.end(), m_NumElements, 0);
+        
         idx_t numConstraints = 1;
         idx_t partsCount = targetNumPartitions;
         idx_t edgesCut = 0;
+        
         idx_t options[METIS_NOPTIONS];
         METIS_SetDefaultOptions(options);
         options[METIS_OPTION_UFACTOR] = 200;//( 1000 * MaxPartitionSize * TargetNumPartitions ) / NumElements - 1000;
         //Options[ METIS_OPTION_NCUTS ] = 8;
         //Options[ METIS_OPTION_IPTYPE ] = METIS_IPTYPE_RANDOM;
         //Options[ METIS_OPTION_SEED ] = 17;
-        //int r = METIS_PartGraphRecursive(
+        
         int r = METIS_PartGraphKway(
-            &graph->count,
+            &graph->Num,
             &numConstraints,            // number of balancing constraints
-            graph->xadj.data(),
-            graph->adjncy.data(),
+            graph->AdjacencyOffset.data(),
+            graph->Adjacency.data(),
             NULL,                        // Vert weights
             NULL,                        // Vert sizes for computing the total communication volume
-            graph->adjncyCost.data(),    // Edge weights
+            graph->AdjacencyCost.data(),    // Edge weights
             &partsCount,
             NULL,                        // Target partition weight
             NULL,                        // Allowed load imbalance tolerance
             options,
             &edgesCut,
-            m_partitionID.data()
+            m_PartitionIDs.data()
         );
-        if ((r == METIS_OK))
+        
+        if (r == METIS_OK)
         {
             std::vector<UInt32> elementCount;
             elementCount.insert(elementCount.end(), targetNumPartitions, 0);
-            for (UInt32 i = 0; i < m_numElements; i++)
+            
+            for (UInt32 i = 0; i < m_NumElements; i++)
             {
-                elementCount[m_partitionID[i]]++;
+                elementCount[m_PartitionIDs[i]]++;
             }
+            
             UInt32 begin = 0;
-            m_ranges.insert(m_ranges.end(), targetNumPartitions, Range());
+            m_Ranges.insert(m_Ranges.end(), targetNumPartitions, Range());
             for (int PartitionIndex = 0; PartitionIndex < targetNumPartitions; PartitionIndex++)
             {
-                m_ranges[PartitionIndex] = { begin, begin + elementCount[PartitionIndex] };
+                m_Ranges[PartitionIndex] = { begin, begin + elementCount[PartitionIndex] };
                 begin += elementCount[PartitionIndex];
                 elementCount[PartitionIndex] = 0;
             }
+            
             std::vector<UInt32> oldIndexes;
-            std::swap(m_indexes, oldIndexes);
-            m_indexes.insert(m_indexes.end(), m_numElements, 0);
-            for (UInt32 i = 0; i < m_numElements; i++)
+            std::swap(m_Indexes, oldIndexes);
+            m_Indexes.insert(m_Indexes.end(), m_NumElements, 0);
+            for (UInt32 i = 0; i < m_NumElements; i++)
             {
-                UInt32 partitionIndex = m_partitionID[i];
-                UInt32 Offset = m_ranges[partitionIndex].begin;
+                UInt32 partitionIndex = m_PartitionIDs[i];
+                UInt32 Offset = m_Ranges[partitionIndex].Begin;
                 UInt32 Num = elementCount[partitionIndex]++;
-                m_indexes[Offset + Num] = oldIndexes[i];
+                m_Indexes[Offset + Num] = oldIndexes[i];
             }
-            m_partitionID.clear();
+            m_PartitionIDs.clear();
         }
     }
     else
     {
         // Single
-        m_ranges.push_back({ 0, m_numElements });
+        m_Ranges.push_back({ 0, m_NumElements });
     }
 }
 
@@ -105,88 +111,99 @@ void GraphPartitioner::BisectGraph(GraphData* graph, GraphData* childGraphs[2])
     auto AddPartition =
         [this](int offset, int num)
     {
-        Range& range = m_ranges[m_numPartitions++];
-        range.begin = offset;
-        range.end = offset + num;
+        Range& range = m_Ranges[m_NumPartitions++];
+        range.Begin = offset;
+        range.End = offset + num;
     };
-    if (graph->count <= m_maxPartitionSize)
+    
+    if (graph->Num <= m_MaxPartitionSize)
     {
-        AddPartition(graph->offset, graph->count);
+        AddPartition(graph->Offset, graph->Num);
         return;
     }
-    const int targetPartitionSize = (m_minPartitionSize + m_maxPartitionSize) / 2;
-    const int targetNumPartitions = std::max(2,
-        (graph->count + targetPartitionSize - 1) / targetPartitionSize);
-    assert(graph->xadj.size() == graph->count + 1);
+    
+    const int targetPartitionSize = (m_MinPartitionSize + m_MaxPartitionSize) / 2;
+    const int targetNumPartitions = std::max(2, (graph->Num + targetPartitionSize - 1) / targetPartitionSize);
+    assert(graph->AdjacencyOffset.size() == (graph->Num + 1));
+    
     idx_t numConstraints = 1;
     idx_t numParts = 2;
     idx_t edgesCut = 0;
+    
     real_t partitionWeights[] = {
         float(targetNumPartitions / 2) / targetNumPartitions,
         1.0f - float(targetNumPartitions / 2) / targetNumPartitions
     };
+    
     idx_t options[METIS_NOPTIONS];
     METIS_SetDefaultOptions(options);
+    
     // Allow looser tolerance when at the higher levels. Strict balance isn't that important until it gets closer to partition sized.
-    bool bLoose = targetNumPartitions >= 128 || m_maxPartitionSize / m_minPartitionSize > 1;
-    bool bSlow = graph->count < 4096;
+    bool bLoose = targetNumPartitions >= 128 || m_MaxPartitionSize / m_MinPartitionSize > 1;
+    //bool bSlow = graph->Num < 4096;
+    
     options[METIS_OPTION_UFACTOR] = bLoose ? 200 : 1;
     //Options[ METIS_OPTION_NCUTS ] = Graph->Num < 1024 ? 8 : ( Graph->Num < 4096 ? 4 : 1 );
     //Options[ METIS_OPTION_NCUTS ] = bSlow ? 4 : 1;
     //Options[ METIS_OPTION_NITER ] = bSlow ? 20 : 10;
     //Options[ METIS_OPTION_IPTYPE ] = METIS_IPTYPE_RANDOM;
     //Options[ METIS_OPTION_MINCONN ] = 1;
+    
     int r = METIS_PartGraphRecursive(
-        &graph->count,
+        &graph->Num,
         &numConstraints,            // number of balancing constraints
-        graph->xadj.data(),
-        graph->adjncy.data(),
+        graph->AdjacencyOffset.data(),
+        graph->Adjacency.data(),
         NULL,                        // Vert weights
         NULL,                        // Vert sizes for computing the total communication volume
-        graph->adjncyCost.data(),    // Edge weights
+        graph->AdjacencyCost.data(),    // Edge weights
         &numParts,
         partitionWeights,            // Target partition weight
         NULL,                        // Allowed load imbalance tolerance
         options,
         &edgesCut,
-        m_partitionID.data() + graph->offset
+        m_PartitionIDs.data() + graph->Offset
     );
+    
     if ((r == METIS_OK))
     {
         // In place divide the array
         // Both sides remain sorted but back is reversed.
-        int front = graph->offset;
-        int back = graph->offset + graph->count - 1;
+        int front = graph->Offset;
+        int back = graph->Offset + graph->Num - 1;
         while (front <= back)
         {
-            while (front <= back && m_partitionID[front] == 0)
+            while (front <= back && m_PartitionIDs[front] == 0)
             {
-                m_swappedWith[front] = front;
+                m_SwappedWith[front] = front;
                 front++;
             }
-            while (front <= back && m_partitionID[back] == 1)
+            while (front <= back && m_PartitionIDs[back] == 1)
             {
-                m_swappedWith[back] = back;
+                m_SwappedWith[back] = back;
                 back--;
             }
             if (front < back)
             {
-                std::swap(m_indexes[front], m_indexes[back]);
-                m_swappedWith[front] = back;
-                m_swappedWith[back] = front;
+                std::swap(m_Indexes[front], m_Indexes[back]);
+                m_SwappedWith[front] = back;
+                m_SwappedWith[back] = front;
                 front++;
                 back--;
             }
         }
+        
         int split = front;
+        
         int num[2];
-        num[0] = split - graph->offset;
-        num[1] = graph->offset + graph->count - split;
+        num[0] = split - graph->Offset;
+        num[1] = graph->Offset + graph->Num - split;
+        
         assert(num[0] > 1);
         assert(num[1] > 1);
-        if (num[0] <= m_maxPartitionSize && num[1] <= m_maxPartitionSize)
+        if (num[0] <= m_MaxPartitionSize && num[1] <= m_MaxPartitionSize)
         {
-            AddPartition(graph->offset, num[0]);
+            AddPartition(graph->Offset, num[0]);
             AddPartition(split, num[1]);
         }
         else
@@ -194,34 +211,37 @@ void GraphPartitioner::BisectGraph(GraphData* graph, GraphData* childGraphs[2])
             for (int i = 0; i < 2; i++)
             {
                 childGraphs[i] = new GraphData;
-                childGraphs[i]->adjncy.reserve(graph->adjncy.size() >> 1);
-                childGraphs[i]->adjncyCost.reserve(graph->adjncy.size() >> 1);
-                childGraphs[i]->xadj.reserve(num[i] + 1);
-                childGraphs[i]->count = num[i];
+                childGraphs[i]->Adjacency.reserve(graph->Adjacency.size() >> 1);
+                childGraphs[i]->AdjacencyCost.reserve(graph->Adjacency.size() >> 1);
+                childGraphs[i]->AdjacencyOffset.reserve(num[i] + 1);
+                childGraphs[i]->Num = num[i];
             }
-            childGraphs[0]->offset = graph->offset;
-            childGraphs[1]->offset = split;
-            for (int i = 0; i < graph->count; i++)
+            childGraphs[0]->Offset = graph->Offset;
+            childGraphs[1]->Offset = split;
+            
+            for (int i = 0; i < graph->Num; i++)
             {
-                GraphData* childGraph = childGraphs[i >= childGraphs[0]->count];
-                childGraph->xadj.push_back(childGraph->adjncy.size());
-                int index = m_swappedWith[graph->offset + i] - graph->offset;
-                for (UInt32 AdjIndex = graph->xadj[index]; AdjIndex < graph->xadj[index + 1]; AdjIndex++)
+                GraphData* childGraph = childGraphs[i >= childGraphs[0]->Num];
+                childGraph->AdjacencyOffset.push_back((idx_t)childGraph->Adjacency.size());
+                int index = m_SwappedWith[graph->Offset + i] - graph->Offset;
+                for (UInt32 AdjIndex = graph->AdjacencyOffset[index]; AdjIndex < graph->AdjacencyOffset[index + 1]; AdjIndex++)
                 {
-                    UInt32 Adj = graph->adjncy[AdjIndex];
-                    UInt32 adjCost = graph->adjncyCost[AdjIndex];
+                    UInt32 adj = graph->Adjacency[AdjIndex];
+                    UInt32 adjCost = graph->AdjacencyCost[AdjIndex];
+                    
                     // Remap to child
-                    Adj = m_swappedWith[graph->offset + Adj] - childGraph->offset;
+                    adj = m_SwappedWith[graph->Offset + adj] - childGraph->Offset;
+                    
                     // Edge connects to node in this graph
-                    if (0 <= Adj && Adj < childGraph->count)
+                    if (0 <= adj && adj < childGraph->Num)
                     {
-                        childGraph->adjncy.push_back(Adj);
-                        childGraph->adjncyCost.push_back(adjCost);
+                        childGraph->Adjacency.push_back(adj);
+                        childGraph->AdjacencyCost.push_back(adjCost);
                     }
                 }
             }
-            childGraphs[0]->xadj.push_back(childGraphs[0]->adjncy.size());
-            childGraphs[1]->xadj.push_back(childGraphs[1]->adjncy.size());
+            childGraphs[0]->AdjacencyOffset.push_back((idx_t)childGraphs[0]->Adjacency.size());
+            childGraphs[1]->AdjacencyOffset.push_back((idx_t)childGraphs[1]->Adjacency.size());
         }
     }
 }
@@ -230,27 +250,33 @@ void GraphPartitioner::RecursiveBisectGraph(GraphData* graph)
     GraphData* childGraphs[2];
     BisectGraph(graph, childGraphs);
     delete graph;
+    
     if (childGraphs[0] && childGraphs[1])
     {
         RecursiveBisectGraph(childGraphs[0]);
         RecursiveBisectGraph(childGraphs[1]);
     }
 }
+
 void GraphPartitioner::PartitionStrict(GraphData* graph, int inMinPartitionSize, int inMaxPartitionSize, bool bThreaded)
 {
-    m_minPartitionSize = inMinPartitionSize;
-    m_maxPartitionSize = inMaxPartitionSize;
-    m_partitionID.insert(m_partitionID.end(), m_numElements, 0);
-    m_swappedWith.insert(m_swappedWith.end(), m_numElements, 0);
+    m_MinPartitionSize = inMinPartitionSize;
+    m_MaxPartitionSize = inMaxPartitionSize;
+    
+    m_PartitionIDs.insert(m_PartitionIDs.end(), m_NumElements, 0);
+    m_SwappedWith.insert(m_SwappedWith.end(), m_NumElements, 0);
+    
     // Adding to atomically so size big enough to not need to grow.
-    int numPartitionsExpected = (graph->count + m_minPartitionSize - 1) / m_minPartitionSize;//FMath::DivideAndRoundUp(Graph->Num, MinPartitionSize);
-    m_ranges.insert(m_ranges.end(), numPartitionsExpected * 2, Range());
-    m_numPartitions = 0;
+    int numPartitionsExpected = (graph->Num + m_MinPartitionSize - 1) / m_MinPartitionSize;//FMath::DivideAndRoundUp(Graph->Num, MinPartitionSize);
+    m_Ranges.insert(m_Ranges.end(), numPartitionsExpected * 2, Range());
+    m_NumPartitions = 0;
+    
     {
         RecursiveBisectGraph(graph);
     }
-    m_ranges.reserve(m_numPartitions);
-    m_partitionID.clear();
- 
-    m_swappedWith.clear();
+    
+    m_Ranges.resize(m_NumPartitions);
+    
+    m_PartitionIDs.clear();
+    m_SwappedWith.clear();
 }

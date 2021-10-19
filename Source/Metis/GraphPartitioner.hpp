@@ -20,21 +20,21 @@ class GraphPartitioner
 public:
     struct GraphData
     {
-        int    offset;
-        int    count;
-        std::vector<idx_t>    adjncy;
-        std::vector<idx_t>    adjncyCost;
-        std::vector<idx_t>    xadj;
+        int Offset;
+        int Num;
+        std::vector<idx_t> Adjacency;
+        std::vector<idx_t> AdjacencyCost;
+        std::vector<idx_t> AdjacencyOffset;
     };
     // Inclusive
     struct Range
     {
-        UInt32    begin;
-        UInt32    end;
-        bool operator<(const Range& Other) const { return begin < Other.begin; }
+        UInt32 Begin;
+        UInt32 End;
+        bool operator<(const Range& Other) const { return Begin < Other.Begin; }
     };
-    std::vector<Range> m_ranges;
-    std::vector<UInt32> m_indexes;
+    std::vector<Range> m_Ranges;
+    std::vector<UInt32> m_Indexes;
     
 public:
     GraphPartitioner(UInt32 num);
@@ -49,30 +49,30 @@ public:
 private:
     void        BisectGraph(GraphData* Graph, GraphData* ChildGraphs[2]);
     void        RecursiveBisectGraph(GraphData* Graph);
-    UInt32 m_numElements;
-    int m_minPartitionSize = 0;
-    int m_maxPartitionSize = 0;
-    UInt32 m_numPartitions;
-    std::vector<idx_t> m_partitionID;
-    std::vector<int> m_swappedWith;
-    std::vector<UInt32> m_sortedTo;
-    std::multimap<UInt32, UInt32> m_localityLinks;
+    UInt32 m_NumElements;
+    int m_MinPartitionSize = 0;
+    int m_MaxPartitionSize = 0;
+    UInt32 m_NumPartitions;
+    std::vector<idx_t> m_PartitionIDs;
+    std::vector<int> m_SwappedWith;
+    std::vector<UInt32> m_SortedTo;
+    std::multimap<UInt32, UInt32> m_LocalityLinks;
 };
 
 inline void GraphPartitioner::AddAdjacency(GraphData* graph, UInt32 adjIndex, UInt32 cost)
 {
-    graph->adjncy.push_back(m_sortedTo[adjIndex]);
-    graph->adjncyCost.push_back(cost);
+    graph->Adjacency.push_back(m_SortedTo[adjIndex]);
+    graph->AdjacencyCost.push_back(cost);
 }
 
 inline void GraphPartitioner::AddLocalityLinks(GraphData* graph, UInt32 index, UInt32 cost)
 {
-    auto iter = m_localityLinks.equal_range(index);
+    auto iter = m_LocalityLinks.equal_range(index);
     for (auto it = iter.first; it != iter.second; ++it)
     {
         UInt32 adjIndex = it->second;
-        graph->adjncy.push_back(m_sortedTo[adjIndex]);
-        graph->adjncyCost.push_back(cost);
+        graph->Adjacency.push_back(m_SortedTo[adjIndex]);
+        graph->AdjacencyCost.push_back(cost);
     }
 }
 
@@ -87,12 +87,12 @@ inline UInt32 MortonCode3(UInt32 x)
 }
 
 template< typename GetCenter >
-void GraphPartitioner::BuildLocalityLinks(DisjointSet& set, const MinMaxAABB& bounds, GetCenter& GetCenterFunc)
+void GraphPartitioner::BuildLocalityLinks(DisjointSet& disjointSet, const MinMaxAABB& bounds, GetCenter& GetCenterFunc)
 {
-    std::vector<UInt32> sortKeys(m_numElements);
-    m_sortedTo.resize(m_numElements);
-    const bool singleThreaded = m_numElements < 5000;
-    for (int index = 0; index != m_numElements; ++index)
+    std::vector<UInt32> sortKeys(m_NumElements);
+    m_SortedTo.resize(m_NumElements);
+    //const bool singleThreaded = m_NumElements < 5000;
+    for (int index = 0; index != m_NumElements; ++index)
     {
         Vector3f center = GetCenterFunc(index);
         Vector3f centerLocal = (center - bounds.GetMin());
@@ -107,61 +107,62 @@ void GraphPartitioner::BuildLocalityLinks(DisjointSet& set, const MinMaxAABB& bo
         sortKeys[index] = morton;
     }
    
-    m_sortedTo = m_indexes;
-    std::sort(m_sortedTo.begin(), m_sortedTo.end(),
+    std::swap(m_SortedTo, m_Indexes);
+    std::sort(m_SortedTo.begin(), m_SortedTo.end(),
         [&](UInt32 Index, UInt32 index2)
     {
         return sortKeys[Index] < sortKeys[index2];
     });
     sortKeys.clear();
-    std::swap(m_indexes, m_sortedTo);
-    for (UInt32 i = 0; i < m_numElements; i++)
+    
+    std::swap(m_Indexes, m_SortedTo);
+    for (UInt32 i = 0; i < m_NumElements; i++)
     {
-        m_sortedTo[m_indexes[i]] = i;
+        m_SortedTo[m_Indexes[i]] = i;
     }
     std::vector<Range> islandRuns;
-    islandRuns.reserve(m_numElements);
+    islandRuns.resize(m_NumElements);
     // Run length acceleration
     // Range of identical IslandID denoting that elements are connected.
     // Used for jumping past connected elements to the next nearby disjoint element.
     {
         UInt32 runIslandID = 0;
         UInt32 runFirstElement = 0;
-        for (UInt32 i = 0; i < m_numElements; i++)
+        for (UInt32 i = 0; i < m_NumElements; i++)
         {
-            UInt32 islandID = set.Find(m_indexes[i]);
+            UInt32 islandID = disjointSet.Find(m_Indexes[i]);
             if (runIslandID != islandID)
             {
                 // We found the end so rewind to the beginning of the run and fill.
                 for (UInt32 j = runFirstElement; j < i; j++)
                 {
-                    islandRuns[j].end = i - 1;
+                    islandRuns[j].End = i - 1;
                 }
                 // Start the next run
                 runIslandID = islandID;
                 runFirstElement = i;
             }
-            islandRuns[i].begin = runFirstElement;
+            islandRuns[i].Begin = runFirstElement;
         }
         // Finish the last run
-        for (UInt32 j = runFirstElement; j < m_numElements; j++)
+        for (UInt32 j = runFirstElement; j < m_NumElements; j++)
         {
-            islandRuns[j].end = m_numElements - 1;
+            islandRuns[j].End = m_NumElements - 1;
         }
     }
-    for (UInt32 i = 0; i < m_numElements; i++)
+    for (UInt32 i = 0; i < m_NumElements; i++)
     {
-        UInt32 index = m_indexes[i];
-        UInt32 runLength = islandRuns[i].end - islandRuns[i].begin + 1;
+        UInt32 index = m_Indexes[i];
+        UInt32 runLength = islandRuns[i].End - islandRuns[i].Begin + 1;
         if (runLength < 128)
         {
-            UInt32 islandID = set[index];
+            UInt32 islandID = disjointSet[index];
             Vector3f center = GetCenterFunc(index);
             UInt32 closestIndex[3] = { ~0u, ~0u, ~0u };
             float  closestDist2[3] = { __FLT_MAX__, __FLT_MAX__, __FLT_MAX__ }; 
             for (int direction = 0; direction < 2; direction++)
             {
-                UInt32 limit = direction ? m_numElements - 1 : 0;
+                UInt32 limit = direction ? m_NumElements - 1 : 0;
                 UInt32 step = direction ? 1 : -1;
                 UInt32 adj = i;
                 for (int iterations = 0; iterations < 16; iterations++)
@@ -169,15 +170,16 @@ void GraphPartitioner::BuildLocalityLinks(DisjointSet& set, const MinMaxAABB& bo
                     if (adj == limit)
                         break;
                     adj += step;
-                    UInt32 adjIndex = m_indexes[adj];
-                    UInt32 adjIslandID = set[adjIndex];
+                    
+                    UInt32 adjIndex = m_Indexes[adj];
+                    UInt32 adjIslandID = disjointSet[adjIndex];
                     if (islandID == adjIslandID)
                     {
                         // Skip past this run
                         if (direction)
-                            adj = islandRuns[adj].end;
+                            adj = islandRuns[adj].End;
                         else
-                            adj = islandRuns[adj].begin;
+                            adj = islandRuns[adj].Begin;
                     }
                     else
                     {
@@ -201,8 +203,8 @@ void GraphPartitioner::BuildLocalityLinks(DisjointSet& set, const MinMaxAABB& bo
                 if (closestIndex[k] != ~0u)
                 {
                     // Add both directions
-                    m_localityLinks.insert(std::make_pair(index, closestIndex[k]));
-                    m_localityLinks.insert(std::make_pair(closestIndex[k], index));
+                    m_LocalityLinks.insert(std::make_pair(index, closestIndex[k]));
+                    m_LocalityLinks.insert(std::make_pair(closestIndex[k], index));
                 }
             }
         }

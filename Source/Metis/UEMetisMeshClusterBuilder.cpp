@@ -190,8 +190,8 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
         auto *graph = graphPartitioner.NewGraph(nIndexDataCount);
         for (UInt32 i = 0; i < triangleCount; i++)
         {
-            graph->xadj[i] = graph->adjncy.size();
-            UInt32 triIndex = graphPartitioner.m_indexes[i];
+            graph->AdjacencyOffset[i] = (idx_t)graph->Adjacency.size();
+            UInt32 triIndex = graphPartitioner.m_Indexes[i];
             for (int k = 0; k < 3; k++)
             {
                 UInt32 edgeIndex = sharedEdges[3 * triIndex + k];
@@ -202,9 +202,9 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
             }
             graphPartitioner.AddLocalityLinks(graph, triIndex, 1);
         }
-        graph->xadj[triangleCount] = graph->adjncy.size();
+        graph->AdjacencyOffset[triangleCount] = (UInt32)graph->Adjacency.size();
         graphPartitioner.PartitionStrict(graph, m_nClusterSize - 4, m_nClusterSize, true);
-        assert(graphPartitioner.m_ranges.size());
+        assert(graphPartitioner.m_Ranges.size());
     }
     /*clusterList.resize_initialized(graphPartitioner.m_ranges.size());
     for (int i = 0; i != graphPartitioner.m_ranges.size(); ++i)

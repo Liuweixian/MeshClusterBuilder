@@ -43,6 +43,7 @@
 		255BA64727116AAA00F9EF17 /* metis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metis.h; sourceTree = "<group>"; };
 		25895145272016D4008ACA35 /* Utilities.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
 		25895146272016D4008ACA35 /* Utilities.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Utilities.hpp; sourceTree = "<group>"; };
+		2589514827211AB1008ACA35 /* Vector4.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Vector4.h; sourceTree = "<group>"; };
 		25C5010727056CD40078C934 /* MeshClusterBuilder.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeshClusterBuilder.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		25C5010A27056CD40078C934 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		25C5011127056D060078C934 /* MeshClusterBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MeshClusterBuilder.cpp; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 				25C5011727058D2B0078C934 /* MeshCluster.cpp */,
 				25C5011827058D2B0078C934 /* MeshCluster.hpp */,
 				25C5011A27058DFC0078C934 /* TypeDef.h */,
+				2589514827211AB1008ACA35 /* Vector4.h */,
 			);
 			name = Source;
 			path = ../../../Source;

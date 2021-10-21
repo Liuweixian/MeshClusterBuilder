@@ -42,5 +42,12 @@ inline Vector3f& Vector3f::operator/=(float s)
     z /= s;
     return *this;
 }
+inline float Distance(const Vector3f& lhs, const Vector3f& rhs)
+{
+    float diff_x = lhs.x - rhs.x;
+    float diff_y = lhs.y - rhs.y;
+    float diff_z = lhs.z - rhs.z;
+    return sqrt(diff_x * diff_x + diff_y * diff_y + diff_z * diff_z);
+}
 
 #endif /* Vector3_h */

@@ -272,3 +272,69 @@ void internal::BuildAdjacencyList(const T* indices, uint32_t indexCount, const V
         }
     }
 }
+
+Vector4f MinimumBoundingSphere(Vector3f* points, uint32_t count)
+{
+    assert(points != nullptr && count != 0);
+
+    // Find the min & max points indices along each axis.
+    uint32_t minAxis[3] = { 0, 0, 0 };
+    uint32_t maxAxis[3] = { 0, 0, 0 };
+
+    for (uint32_t i = 1; i < count; ++i)
+    {
+        float* point = (float*)(points + i);
+
+        for (uint32_t j = 0; j < 3; ++j)
+        {
+            float* min = (float*)(&points[minAxis[j]]);
+            float* max = (float*)(&points[maxAxis[j]]);
+
+            minAxis[j] = point[j] < min[j] ? i : minAxis[j];
+            maxAxis[j] = point[j] > max[j] ? i : maxAxis[j];
+        }
+    }
+
+    // Find axis with maximum span.
+    float distSqMax = 0.0f;
+    uint32_t axis = 0;
+
+    for (uint32_t i = 0; i < 3u; ++i)
+    {
+        Vector3f min = points[minAxis[i]];
+        Vector3f max = points[maxAxis[i]];
+
+        float distSq = Distance(min, max);
+        if (distSq > distSqMax)
+        {
+            distSqMax = distSq;
+            axis = i;
+        }
+    }
+
+    // Calculate an initial starting center point & radius.
+    Vector3f p1 = points[minAxis[axis]];
+    Vector3f p2 = points[maxAxis[axis]];
+
+    Vector3f center = (p1 + p2) * 0.5f;
+    float radius = Distance(p1, p2) * 0.5f;
+    float radiusSq = radius * radius;
+
+    // Add all our points to bounding sphere expanding radius & recalculating center point as necessary.
+    for (uint32_t i = 0; i < count; ++i)
+    {
+        Vector3f point = *(points + i);
+        float dist = Distance(point, center);
+        float distSq = dist * dist;
+
+        if (distSq > radiusSq)
+        {
+            float k = (radius / dist) * 0.5f + 0.5f;
+
+            center = center * k + point * (1 - k);
+            radius = (radius + dist) * 0.5f;
+        }
+    }
+    return Vector4f(center, radius);
+}
+

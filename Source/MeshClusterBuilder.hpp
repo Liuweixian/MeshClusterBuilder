@@ -20,7 +20,7 @@ public:
     MeshClusterBuilder();
     ~MeshClusterBuilder();
     
-    void SetClusterSize(int nClusterSize);
+    virtual void SetClusterSize(int nClusterSize);
 protected:
     int m_nClusterSize;
 };

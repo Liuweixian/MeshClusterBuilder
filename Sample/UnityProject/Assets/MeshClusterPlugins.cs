@@ -1,4 +1,4 @@
-using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEditor;
@@ -128,6 +128,44 @@ public class MeshClusterPlugins
         int nClusterCount = 0;
         MeshCluster[] pMeshCluster = new MeshCluster[1];
         BuildCluster(BuilderType.eUE_Metis, 128, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, ref nClusterCount, ref pMeshCluster);
+        Debug.Log("Result --> " + nClusterCount);
+    }
+
+    [MenuItem("MeshClusterBuilder/TestSample1ForMS")]
+    public static void TestSample1ForMS()
+    {
+        RegisterUnityLogCallback(UnityLogCallback);
+
+        List<Vector3> vertices = new List<Vector3>();
+        List<int> indices = new List<int>();
+        
+        string dataFilePath = Application.dataPath + "/TestData/ms_iron_man_data.txt";
+        string[] lines = File.ReadAllLines(dataFilePath);
+        for (int i = 0; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            if (line.StartsWith("vertices:"))
+            {
+                line = line.Replace("vertices:", "");
+                string[] datas = line.Split(new char[]{','});
+                Vector3 vertex = new Vector3(float.Parse(datas[0]), float.Parse(datas[1]), float.Parse(datas[2]));
+                vertices.Add(vertex);
+                continue;
+            }
+
+            if (line.StartsWith("indices:"))
+            {
+                line = line.Replace("indices:", "");
+                int index = int.Parse(line);
+                indices.Add(index);
+            }
+        }
+        Bounds bounds = new Bounds();
+        bounds.SetMinMax(new Vector3(-100.00f, -100.00f, -100.00f), new Vector3(100.00f, 100.00f, 100.00f));
+
+        int nClusterCount = 0;
+        MeshCluster[] pMeshCluster = new MeshCluster[1];
+        BuildCluster(BuilderType.eMS_Meshlet, 64, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, ref nClusterCount, ref pMeshCluster);
         Debug.Log("Result --> " + nClusterCount);
     }
 }

@@ -12,11 +12,23 @@
 MSMeshletBuilder::MSMeshletBuilder()
 {
     m_nClusterSize = 64;
+    m_nMaxPrims = m_nClusterSize * 2;
 }
 
 MSMeshletBuilder::~MSMeshletBuilder()
 {
     
+}
+
+void MSMeshletBuilder::SetMaxPrims(int nMaxPrims)
+{
+    m_nMaxPrims = nMaxPrims;
+}
+
+void MSMeshletBuilder::SetClusterSize(int nClusterSize)
+{
+    m_nClusterSize = nClusterSize;
+    m_nMaxPrims = m_nClusterSize * 2;
 }
 
 // Sort in reverse order to use vector as a queue with pop_back.
@@ -76,7 +88,7 @@ void MSMeshletBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDa
         assert(tri[2] < nVertexDataCount);
 
         // Try to add triangle to meshlet
-        if (AddToMeshlet(nVertexDataCount, m_nClusterSize, *curr, tri))
+        if (AddToMeshlet(m_nClusterSize, m_nMaxPrims, *curr, tri))
         {
             // Success! Mark as added.
             checklist[index] = true;
@@ -157,7 +169,7 @@ void MSMeshletBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDa
             }
 
             // Determine whether we need to move to the next meshlet.
-            if (IsMeshletFull(nVertexDataCount, m_nClusterSize, *curr))
+            if (IsMeshletFull(m_nClusterSize, m_nMaxPrims, *curr))
             {
                 m_positions.clear();
                 normals.clear();

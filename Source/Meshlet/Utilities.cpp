@@ -79,7 +79,7 @@ void internal::BuildAdjacencyList(const T* indices, uint32_t indexCount, const V
 
     for (uint32_t i = 0; i < vertexCount; ++i)
     {
-        Vector3f position = *(positions + i);
+        Vector3f position = positions[i];
         size_t hash = Hash(position);
 
         auto it = uniquePositionMap.find(hash);

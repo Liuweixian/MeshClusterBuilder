@@ -76,7 +76,7 @@ inline UInt32 HashPosition(const Vector3f& position)
 }
 
 template<class IndexType>
-void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const MinMaxAABB bounds, int& nClusterCount, MeshCluster** pMeshCluster)
+void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const MinMaxAABB bounds, MeshClusterResult* pMeshClusterResult)
 {
     typedef std::multimap<UInt32, UInt32> EdgeHashTable;
     EdgeHashTable edgeHash;
@@ -206,15 +206,28 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
         graphPartitioner.PartitionStrict(graph, m_nClusterSize - 4, m_nClusterSize, true);
         assert(graphPartitioner.m_Ranges.size());
     }
-    /*clusterList.resize_initialized(graphPartitioner.m_ranges.size());
-    for (int i = 0; i != graphPartitioner.m_ranges.size(); ++i)
+    pMeshClusterResult->m_nCount = (int)graphPartitioner.m_Ranges.size();
+    pMeshClusterResult->m_pMeshClusterList = new MeshCluster[pMeshClusterResult->m_nCount];
+    for (int i = 0; i < pMeshClusterResult->m_nCount; i++)
     {
-        const GraphPartitioner::Range& range = graphPartitioner.m_ranges[i];
-        clusterList[i].Init<IndexType>(range.begin,
-            range.end,
-            graphPartitioner.m_indexes,
-            indexBuffer);
-    }*/
+        const GraphPartitioner::Range& range = graphPartitioner.m_Ranges[i];
+        int triangleCount = range.End - range.Begin;
+        MeshCluster* meshCluster = new MeshCluster();
+        meshCluster->m_nIndexCount = triangleCount * 3;
+        std::vector<UInt32>* indexBuffer = new std::vector<UInt32>();
+        indexBuffer->reserve(meshCluster->m_nIndexCount);
+        for (int j = range.Begin; j < range.End; j++)
+        {
+            UInt32 triIndex = graphPartitioner.m_Indexes[j];
+            for (int k = 0; k < 3; k++)
+            {
+                UInt32 index = pIndexData[triIndex * 3 + k];
+                indexBuffer->push_back(index);
+            }
+        }
+        meshCluster->m_pIndexBuffer = indexBuffer->data();
+        pMeshClusterResult->m_pMeshClusterList[i] = meshCluster;
+    }
 }
 
-template void UEMetisMeshClusterBuilder::Build<UInt32>(const Vector3f *pVertexData, const UInt32 nVertexDataCount, const UInt32 *pIndexData, const UInt32 nIndexDataCount, const MinMaxAABB bounds, int &nClusterCount, MeshCluster **pMeshCluster);
+template void UEMetisMeshClusterBuilder::Build<UInt32>(const Vector3f *pVertexData, const UInt32 nVertexDataCount, const UInt32 *pIndexData, const UInt32 nIndexDataCount, const MinMaxAABB bounds, MeshClusterResult* pMeshClusterResult);

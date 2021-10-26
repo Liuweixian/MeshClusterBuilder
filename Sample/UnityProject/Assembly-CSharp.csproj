@@ -43,6 +43,7 @@
   <ItemGroup>
      <Compile Include="Assets\MeshClusterPlugins.cs" />
      <None Include="Assets\TestData\ms_iron_man_data.txt" />
+     <None Include="Assets\TestData\ue_iron_man_data.txt" />
      <Reference Include="UnityEngine">
      <HintPath>/Applications/Unity/Hub/Editor/2021.1.16f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.dll</HintPath>
      </Reference>

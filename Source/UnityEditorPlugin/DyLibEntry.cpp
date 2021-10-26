@@ -9,6 +9,7 @@
 #include "IUnityInterface.h"
 #include "UEMetisMeshClusterBuilder.hpp"
 #include "MSMeshletBuilder.hpp"
+#include "MeshClusterResult.h"
 
 static IUnityInterfaces* s_UnityInterfaces = NULL;
 IUnityInterfaces& GetUnityInterfaces() { return *s_UnityInterfaces; }
@@ -33,7 +34,7 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API RegisterUnityLogCallb
     s_UnityLogCallback = cb;
 }
 
-extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API BuildCluster(BuilderType eBuildType, const UInt32 nClusterSize, const Vector3f* pVertexData, const UInt32 nVertexDataCount, const UInt32* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int& nClusterCount, MeshCluster** pMeshCluster)
+extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API BuildCluster(BuilderType eBuildType, const UInt32 nClusterSize, const Vector3f* pVertexData, const UInt32 nVertexDataCount, const UInt32* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, MeshClusterResult* pMeshClusterResult)
 {
     s_UnityLogCallback("Start Building Cluster...");
     if (eBuildType == eUE_Metis)
@@ -41,13 +42,13 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API BuildCluster(BuilderT
         UEMetisMeshClusterBuilder metisBuilder;
         metisBuilder.SetClusterSize(nClusterSize);
         MinMaxAABB minMaxAABB(bounds);
-        metisBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, minMaxAABB, nClusterCount, pMeshCluster);
+        metisBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, minMaxAABB, pMeshClusterResult);
     }
     else if (eBuildType == eMS_Meshlet)
     {
         MSMeshletBuilder meshletBuilder;
         meshletBuilder.SetClusterSize(nClusterSize);
-        meshletBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, nClusterCount, pMeshCluster);
+        //meshletBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, nClusterCount, pMeshCluster);
     }
     else
     {

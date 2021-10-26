@@ -3,4 +3,133 @@
    uuid = "2C51FA56-E6C6-4E10-832D-1F6973212006"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "49BF88E3-7C67-46DC-BADD-756B6AA03B12"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/Meshlet/MSMeshletBuilder.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "MSMeshletBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "49BF88E3-7C67-46DC-BADD-756B6AA03B12 - 8ca69da72966e31f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "void MSMeshletBuilder::Build&lt;unsigned int&gt;(Vector3f const*, unsigned int, unsigned int const*, unsigned int, AABB, int&amp;, MeshCluster**)"
+                  moduleName = "MeshClusterBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Source/Meshlet/MSMeshletBuilder.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "3745">
+               </Location>
+               <Location
+                  uuid = "49BF88E3-7C67-46DC-BADD-756B6AA03B12 - 423417b1f2e04396"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "void MSMeshletBuilder::Build&lt;unsigned int&gt;(Vector3f const*, unsigned int, unsigned int const*, unsigned int, AABB, int&amp;, MeshCluster*)"
+                  moduleName = "MeshClusterBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Source/Meshlet/MSMeshletBuilder.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "3745">
+               </Location>
+               <Location
+                  uuid = "49BF88E3-7C67-46DC-BADD-756B6AA03B12 - e3d61c8758af8fd4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "void MSMeshletBuilder::Build&lt;unsigned int&gt;(Vector3f const*, unsigned int, unsigned int const*, unsigned int, AABB, MeshClusterResult*)"
+                  moduleName = "MeshClusterBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Source/Meshlet/MSMeshletBuilder.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "3741">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F8B6EC6-AC38-4904-88B4-CDC480AB687A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/Meshlet/MSMeshletBuilder.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "MSMeshletBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD8FAEBD-7FD2-46B2-80C8-22E39724C081"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/Meshlet/MSMeshletBuilder.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "MSMeshletBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1C3DDA89-CAED-40F7-A46B-B0E947ADF964"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/Meshlet/MSMeshletBuilder.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "MSMeshletBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "54CF07B9-D0B7-4177-A217-962C87308EFE"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/Metis/UEMetisMeshClusterBuilder.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "229"
+            endingLineNumber = "229"
+            landmarkName = "UEMetisMeshClusterBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

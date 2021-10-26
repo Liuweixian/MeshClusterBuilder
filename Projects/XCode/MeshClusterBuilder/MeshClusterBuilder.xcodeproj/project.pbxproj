@@ -14,7 +14,6 @@
 		255BA64A2711764700F9EF17 /* MeshClusterBuilder.bundle in CopyFiles */ = {isa = PBXBuildFile; fileRef = 25C5010727056CD40078C934 /* MeshClusterBuilder.bundle */; };
 		25895147272016D4008ACA35 /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25895145272016D4008ACA35 /* Utilities.cpp */; };
 		25C5011327056D060078C934 /* MeshClusterBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011127056D060078C934 /* MeshClusterBuilder.cpp */; };
-		25C5011927058D2B0078C934 /* MeshCluster.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011727058D2B0078C934 /* MeshCluster.cpp */; };
 		25C5011D270FEF530078C934 /* DyLibEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 25C5011C270FEF530078C934 /* DyLibEntry.cpp */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2557652527280BE400CDB2C1 /* MeshClusterResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MeshClusterResult.h; sourceTree = "<group>"; };
 		255BA537271020DA00F9EF17 /* UEMetisMeshClusterBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = UEMetisMeshClusterBuilder.cpp; sourceTree = "<group>"; };
 		255BA538271020DA00F9EF17 /* UEMetisMeshClusterBuilder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UEMetisMeshClusterBuilder.hpp; sourceTree = "<group>"; };
 		255BA53A2710272C00F9EF17 /* MSMeshletBuilder.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MSMeshletBuilder.cpp; sourceTree = "<group>"; };
@@ -50,8 +50,6 @@
 		25C5011227056D060078C934 /* MeshClusterBuilder.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MeshClusterBuilder.hpp; sourceTree = "<group>"; };
 		25C5011427056D4D0078C934 /* Vector3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vector3.h; sourceTree = "<group>"; };
 		25C50116270586FD0078C934 /* AABB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AABB.h; sourceTree = "<group>"; };
-		25C5011727058D2B0078C934 /* MeshCluster.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = MeshCluster.cpp; sourceTree = "<group>"; };
-		25C5011827058D2B0078C934 /* MeshCluster.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = MeshCluster.hpp; sourceTree = "<group>"; };
 		25C5011A27058DFC0078C934 /* TypeDef.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TypeDef.h; sourceTree = "<group>"; };
 		25C5011B270FEF0A0078C934 /* IUnityInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IUnityInterface.h; sourceTree = "<group>"; };
 		25C5011C270FEF530078C934 /* DyLibEntry.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DyLibEntry.cpp; sourceTree = "<group>"; };
@@ -154,10 +152,9 @@
 				25C5011127056D060078C934 /* MeshClusterBuilder.cpp */,
 				25C5011227056D060078C934 /* MeshClusterBuilder.hpp */,
 				25C50116270586FD0078C934 /* AABB.h */,
-				25C5011727058D2B0078C934 /* MeshCluster.cpp */,
-				25C5011827058D2B0078C934 /* MeshCluster.hpp */,
 				25C5011A27058DFC0078C934 /* TypeDef.h */,
 				2589514827211AB1008ACA35 /* Vector4.h */,
+				2557652527280BE400CDB2C1 /* MeshClusterResult.h */,
 			);
 			name = Source;
 			path = ../../../Source;
@@ -235,7 +232,6 @@
 				255BA53C2710272C00F9EF17 /* MSMeshletBuilder.cpp in Sources */,
 				25C5011327056D060078C934 /* MeshClusterBuilder.cpp in Sources */,
 				255BA54327104B4300F9EF17 /* GraphPartitioner.cpp in Sources */,
-				25C5011927058D2B0078C934 /* MeshCluster.cpp in Sources */,
 				25895147272016D4008ACA35 /* Utilities.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

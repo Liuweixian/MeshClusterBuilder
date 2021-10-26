@@ -38,7 +38,7 @@ bool CompareScores(const std::pair<uint32_t, float>& a, const std::pair<uint32_t
 }
 
 template<class IndexType>
-void MSMeshletBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int& nClusterCount, MeshCluster** pMeshCluster)
+void MSMeshletBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, MeshClusterResult* pMeshClusterResult)
 {
     const uint32_t triCount = nIndexDataCount / 3;
     
@@ -225,7 +225,7 @@ void MSMeshletBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDa
     }
 }
 
-template void MSMeshletBuilder::Build<UInt32>(const Vector3f *pVertexData, const UInt32 nVertexDataCount, const UInt32 *pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int &nClusterCount, MeshCluster **pMeshCluster);
+template void MSMeshletBuilder::Build<UInt32>(const Vector3f *pVertexData, const UInt32 nVertexDataCount, const UInt32 *pIndexData, const UInt32 nIndexDataCount, const AABB bounds, MeshClusterResult* pMeshClusterResult);
 
 // Compute number of triangle vertices already exist in the meshlet
 template <typename T>

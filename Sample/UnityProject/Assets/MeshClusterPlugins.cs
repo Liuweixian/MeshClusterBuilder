@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -14,8 +15,14 @@ public class MeshClusterPlugins
 
     struct MeshCluster
     {
-        private int indexCount;
-        private byte[] indexBuffer;
+        public int indexCount;
+        public IntPtr indexList;
+    }
+    
+    struct MeshClusterResult
+    {
+        public int meshClusterCount;
+        public IntPtr meshClusterList;
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -29,10 +36,8 @@ public class MeshClusterPlugins
         Debug.Log(log);
     }
 
-
     [DllImport("MeshClusterBuilder", CallingConvention = CallingConvention.Cdecl)]
-    static extern void BuildCluster(BuilderType eBuildType, int nClusterSize, Vector3[] pVertexData, int nVertexDataCount, int[] pIndexData, int nIndexDataCount, Bounds bounds, ref int nClusterCount,
-        ref MeshCluster[] pMeshCluster);
+    static extern void BuildCluster(BuilderType eBuildType, int nClusterSize, Vector3[] pVertexData, int nVertexDataCount, int[] pIndexData, int nIndexDataCount, Bounds bounds, IntPtr resultPtr);
 
     [MenuItem("MeshClusterBuilder/BuildSelected")]
     public static void BuildSelected()
@@ -48,8 +53,8 @@ public class MeshClusterPlugins
         Debug.Log(meshData.vertices.Length + "-" + indices.Length + "-" + meshData.bounds);
 
         int nClusterCount = 0;
-        MeshCluster[] pMeshCluster = new MeshCluster[1];
-        BuildCluster(BuilderType.eUE_Metis, 128, meshData.vertices, meshData.vertices.Length, indices, indices.Length, meshData.bounds, ref nClusterCount, ref pMeshCluster);
+        //MeshCluster[] pMeshCluster = new MeshCluster[1];
+        //BuildCluster(BuilderType.eUE_Metis, 128, meshData.vertices, meshData.vertices.Length, indices, indices.Length, meshData.bounds, ref nClusterCount, ref pMeshCluster);
         Debug.Log("Result --> " + nClusterCount);
     }
 
@@ -57,78 +62,25 @@ public class MeshClusterPlugins
     public static void TestSample1ForUE()
     {
         RegisterUnityLogCallback(UnityLogCallback);
-
+        
         List<Vector3> vertices = new List<Vector3>();
-        vertices.Add(new Vector3(-100.00f, -100.00f, 100.00f));
-        vertices.Add(new Vector3(-100.00f, 100.00f, -100.00f));
-        vertices.Add(new Vector3(-100.00f, 100.00f, 100.00f));
-        vertices.Add(new Vector3(-100.00f, -100.00f, -100.00f));
-        vertices.Add(new Vector3(100.00f, -100.00f, 100.00f));
-        vertices.Add(new Vector3(-100.00f, -100.00f, -100.00f));
-        vertices.Add(new Vector3(-100.00f, -100.00f, 100.00f));
-        vertices.Add(new Vector3(100.00f, -100.00f, -100.00f));
-        vertices.Add(new Vector3(100.00f, 100.00f, 100.00f));
-        vertices.Add(new Vector3(100.00f, -100.00f, -100.00f));
-        vertices.Add(new Vector3(100.00f, -100.00f, 100.00f));
-        vertices.Add(new Vector3(100.00f, 100.00f, -100.00f));
-        vertices.Add(new Vector3(-100.00f, 100.00f, 100.00f));
-        vertices.Add(new Vector3(100.00f, 100.00f, -100.00f));
-        vertices.Add(new Vector3(100.00f, 100.00f, 100.00f));
-        vertices.Add(new Vector3(-100.00f, 100.00f, -100.00f));
-        vertices.Add(new Vector3(100.00f, 100.00f, -100.00f));
-        vertices.Add(new Vector3(-100.00f, 100.00f, -100.00f));
-        vertices.Add(new Vector3(-100.00f, -100.00f, -100.00f));
-        vertices.Add(new Vector3(100.00f, -100.00f, -100.00f));
-        vertices.Add(new Vector3(-100.00f, -100.00f, 100.00f));
-        vertices.Add(new Vector3(-100.00f, 100.00f, 100.00f));
-        vertices.Add(new Vector3(100.00f, -100.00f, 100.00f));
-        vertices.Add(new Vector3(100.00f, 100.00f, 100.00f));
-
         List<int> indices = new List<int>();
-        indices.Add(0);
-        indices.Add(1);
-        indices.Add(2);
-        indices.Add(1);
-        indices.Add(0);
-        indices.Add(3);
-        indices.Add(4);
-        indices.Add(5);
-        indices.Add(6);
-        indices.Add(5);
-        indices.Add(4);
-        indices.Add(7);
-        indices.Add(8);
-        indices.Add(9);
-        indices.Add(10);
-        indices.Add(9);
-        indices.Add(8);
-        indices.Add(11);
-        indices.Add(12);
-        indices.Add(13);
-        indices.Add(14);
-        indices.Add(13);
-        indices.Add(12);
-        indices.Add(15);
-        indices.Add(16);
-        indices.Add(17);
-        indices.Add(18);
-        indices.Add(16);
-        indices.Add(18);
-        indices.Add(19);
-        indices.Add(20);
-        indices.Add(21);
-        indices.Add(22);
-        indices.Add(22);
-        indices.Add(21);
-        indices.Add(23);
-
+        
+        string dataFilePath = Application.dataPath + "/TestData/ue_iron_man_data.txt";
+        ReadDataFromFile(dataFilePath, vertices, indices);
+        
         Bounds bounds = new Bounds();
-        bounds.SetMinMax(new Vector3(-100.00f, -100.00f, -100.00f), new Vector3(100.00f, 100.00f, 100.00f));
-
-        int nClusterCount = 0;
-        MeshCluster[] pMeshCluster = new MeshCluster[1];
-        BuildCluster(BuilderType.eUE_Metis, 128, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, ref nClusterCount, ref pMeshCluster);
-        Debug.Log("Result --> " + nClusterCount);
+        bounds.SetMinMax(new Vector3(-0.854617f, -3.70903397f, -0.403672993f), new Vector3(0.854617f, 3.70903397f, 0.403672993f));
+        
+        int meshClusterResultSize = Marshal.SizeOf<MeshClusterResult>();
+        IntPtr resultPtr = Marshal.AllocHGlobal(meshClusterResultSize);
+        BuildCluster(BuilderType.eUE_Metis, 128, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, resultPtr);
+        MeshClusterResult result = Marshal.PtrToStructure<MeshClusterResult>(resultPtr);
+        MeshCluster meshCluster = Marshal.PtrToStructure<MeshCluster>(result.meshClusterList);
+        Debug.Log(result.meshClusterCount);
+        Debug.Log(meshCluster.indexCount);
+        for (int i = 0; i < meshCluster.indexCount; i++)
+            Debug.Log(meshCluster.indexList.ToInt32());
     }
 
     [MenuItem("MeshClusterBuilder/TestSample1ForMS")]
@@ -140,6 +92,19 @@ public class MeshClusterPlugins
         List<int> indices = new List<int>();
         
         string dataFilePath = Application.dataPath + "/TestData/ms_iron_man_data.txt";
+        ReadDataFromFile(dataFilePath, vertices, indices);
+
+        Bounds bounds = new Bounds();
+        bounds.SetMinMax(new Vector3(-100.00f, -100.00f, -100.00f), new Vector3(100.00f, 100.00f, 100.00f));
+
+        int nClusterCount = 0;
+        //MeshCluster[] pMeshCluster = null;
+        //BuildCluster(BuilderType.eMS_Meshlet, 64, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, ref nClusterCount, ref pMeshCluster);
+        Debug.Log("Result --> " + nClusterCount);
+    }
+
+    private static void ReadDataFromFile(string dataFilePath, List<Vector3> vertices, List<int> indices)
+    {
         string[] lines = File.ReadAllLines(dataFilePath);
         for (int i = 0; i < lines.Length; i++)
         {
@@ -160,12 +125,5 @@ public class MeshClusterPlugins
                 indices.Add(index);
             }
         }
-        Bounds bounds = new Bounds();
-        bounds.SetMinMax(new Vector3(-100.00f, -100.00f, -100.00f), new Vector3(100.00f, 100.00f, 100.00f));
-
-        int nClusterCount = 0;
-        MeshCluster[] pMeshCluster = new MeshCluster[1];
-        BuildCluster(BuilderType.eMS_Meshlet, 64, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, ref nClusterCount, ref pMeshCluster);
-        Debug.Log("Result --> " + nClusterCount);
     }
 }

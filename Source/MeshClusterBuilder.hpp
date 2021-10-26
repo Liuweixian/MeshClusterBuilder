@@ -12,7 +12,6 @@
 #include "Vector3.h"
 #include "AABB.h"
 #include "TypeDef.h"
-#include "MeshCluster.hpp"
 
 class MeshClusterBuilder
 {

@@ -12,6 +12,7 @@
 #include <vector>
 #include "MeshClusterBuilder.hpp"
 #include "Vector4.h"
+#include "MeshClusterResult.h"
 
 template <typename T>
 struct InlineMeshlet
@@ -34,7 +35,7 @@ public:
     MSMeshletBuilder();
     ~MSMeshletBuilder();
     template<class IndexType>
-    void Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, int& nClusterCount, MeshCluster** pMeshCluster);
+    void Build(const Vector3f* pVertexData, const UInt32 nVertexDataCount, const IndexType* pIndexData, const UInt32 nIndexDataCount, const AABB bounds, MeshClusterResult* pMeshClusterResult);
     
     void SetMaxPrims(int nMaxPrims);
     void SetClusterSize(int nClusterSize) override;

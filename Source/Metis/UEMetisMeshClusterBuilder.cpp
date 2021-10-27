@@ -214,18 +214,17 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
         int triangleCount = range.End - range.Begin;
         MeshCluster* meshCluster = new MeshCluster();
         meshCluster->m_nIndexCount = triangleCount * 3;
-        std::vector<UInt32>* indexBuffer = new std::vector<UInt32>();
-        indexBuffer->reserve(meshCluster->m_nIndexCount);
+        meshCluster->m_pIndexBuffer = new UInt32[meshCluster->m_nIndexCount];
+        int index = 0;
         for (int j = range.Begin; j < range.End; j++)
         {
             UInt32 triIndex = graphPartitioner.m_Indexes[j];
             for (int k = 0; k < 3; k++)
             {
-                UInt32 index = pIndexData[triIndex * 3 + k];
-                indexBuffer->push_back(index);
+                UInt32 vertIndex = pIndexData[triIndex * 3 + k];
+                meshCluster->m_pIndexBuffer[index++] = vertIndex;
             }
         }
-        meshCluster->m_pIndexBuffer = indexBuffer->data();
         pMeshClusterResult->m_pMeshClusterList[i] = meshCluster;
     }
 }

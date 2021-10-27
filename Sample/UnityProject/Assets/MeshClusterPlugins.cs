@@ -80,7 +80,7 @@ public class MeshClusterPlugins
         Debug.Log(result.meshClusterCount);
         Debug.Log(meshCluster.indexCount);
         for (int i = 0; i < meshCluster.indexCount; i++)
-            Debug.Log(meshCluster.indexList.ToInt32());
+            Debug.Log(Marshal.PtrToStructure<UInt32>(meshCluster.indexList));
     }
 
     [MenuItem("MeshClusterBuilder/TestSample1ForMS")]

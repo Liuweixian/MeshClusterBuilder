@@ -119,14 +119,62 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "54CF07B9-D0B7-4177-A217-962C87308EFE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../Source/Metis/UEMetisMeshClusterBuilder.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "229"
-            endingLineNumber = "229"
+            startingLineNumber = "228"
+            endingLineNumber = "228"
+            landmarkName = "UEMetisMeshClusterBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "54CF07B9-D0B7-4177-A217-962C87308EFE - bab5e11f7e630fef"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "void UEMetisMeshClusterBuilder::Build&lt;unsigned int&gt;(Vector3f const*, unsigned int, unsigned int const*, unsigned int, MinMaxAABB, MeshClusterResult*)"
+                  moduleName = "MeshClusterBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Source/Metis/UEMetisMeshClusterBuilder.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "229"
+                  endingLineNumber = "229"
+                  offsetFromSymbolStart = "3583">
+               </Location>
+               <Location
+                  uuid = "54CF07B9-D0B7-4177-A217-962C87308EFE - bab5e11f7e630fcc"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "void UEMetisMeshClusterBuilder::Build&lt;unsigned int&gt;(Vector3f const*, unsigned int, unsigned int const*, unsigned int, MinMaxAABB, MeshClusterResult*)"
+                  moduleName = "MeshClusterBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Source/Metis/UEMetisMeshClusterBuilder.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "228"
+                  endingLineNumber = "228"
+                  offsetFromSymbolStart = "3566">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B4527C79-0318-4CB6-903C-9C3C5752D271"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/Metis/UEMetisMeshClusterBuilder.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "225"
+            endingLineNumber = "225"
             landmarkName = "UEMetisMeshClusterBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
             landmarkType = "7">
          </BreakpointContent>

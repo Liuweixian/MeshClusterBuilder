@@ -13,16 +13,28 @@ public class MeshClusterPlugins
         eMS_Meshlet
     };
 
-    struct MeshCluster
+    struct MeshClusterForPlugin
     {
-        public int indexCount;
-        public IntPtr indexList;
+        public int IndexCount;
+        public IntPtr IndicesIntPtr;
     }
     
+    struct MeshClusterResultForPlugin
+    {
+        public int MeshClusterCount;
+        public IntPtr MeshClustersIntPtr;
+    }
+
+    struct MeshCluster
+    {
+        public int IndexCount;
+        public List<UInt32> Indices;
+    }
+
     struct MeshClusterResult
     {
-        public int meshClusterCount;
-        public IntPtr meshClusterList;
+        public int MeshClusterCount;
+        public List<MeshCluster> MeshClusters;
     }
 
     [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
@@ -58,8 +70,39 @@ public class MeshClusterPlugins
         Debug.Log("Result --> " + nClusterCount);
     }
 
+    private static IntPtr CreatePluginResult()
+    {
+        int meshClusterResultSize = Marshal.SizeOf<MeshClusterResultForPlugin>();
+        return Marshal.AllocHGlobal(meshClusterResultSize);
+    }
+
+    private static MeshClusterResult ParsingResult(IntPtr resultIntPtr)
+    {
+        MeshClusterResultForPlugin resultForPlugin = Marshal.PtrToStructure<MeshClusterResultForPlugin>(resultIntPtr);
+        MeshClusterResult meshClusterResult = new MeshClusterResult();
+        meshClusterResult.MeshClusterCount = resultForPlugin.MeshClusterCount;
+        meshClusterResult.MeshClusters = new List<MeshCluster>(meshClusterResult.MeshClusterCount);
+        int sizeOfMeshClusterForPlugin = Marshal.SizeOf<MeshClusterForPlugin>();
+        int sizeOfUInt32 = Marshal.SizeOf<UInt32>();
+        for (int i = 0; i < meshClusterResult.MeshClusterCount; i++)
+        {
+            MeshClusterForPlugin meshClusterForPlugin = Marshal.PtrToStructure<MeshClusterForPlugin>(resultForPlugin.MeshClustersIntPtr + i * sizeOfMeshClusterForPlugin);
+            MeshCluster meshCluster = new MeshCluster();
+            meshCluster.IndexCount = meshClusterForPlugin.IndexCount;
+            meshCluster.Indices = new List<UInt32>(meshCluster.IndexCount);
+            for (int j = 0; j < meshCluster.IndexCount; j++)
+            {
+                UInt32 index = Marshal.PtrToStructure<UInt32>(meshClusterForPlugin.IndicesIntPtr + j * sizeOfUInt32);
+                meshCluster.Indices.Add(index);
+            }
+            meshClusterResult.MeshClusters.Add(meshCluster);
+        }
+
+        return meshClusterResult;
+    }
+
     [MenuItem("MeshClusterBuilder/TestSample1ForUE")]
-    public static void TestSample1ForUE()
+    private static void TestSample1ForUE()
     {
         RegisterUnityLogCallback(UnityLogCallback);
         
@@ -71,20 +114,14 @@ public class MeshClusterPlugins
         
         Bounds bounds = new Bounds();
         bounds.SetMinMax(new Vector3(-0.854617f, -3.70903397f, -0.403672993f), new Vector3(0.854617f, 3.70903397f, 0.403672993f));
-        
-        int meshClusterResultSize = Marshal.SizeOf<MeshClusterResult>();
-        IntPtr resultPtr = Marshal.AllocHGlobal(meshClusterResultSize);
+
+        IntPtr resultPtr = CreatePluginResult();
         BuildCluster(BuilderType.eUE_Metis, 128, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, resultPtr);
-        MeshClusterResult result = Marshal.PtrToStructure<MeshClusterResult>(resultPtr);
-        MeshCluster meshCluster = Marshal.PtrToStructure<MeshCluster>(result.meshClusterList);
-        Debug.Log(result.meshClusterCount);
-        Debug.Log(meshCluster.indexCount);
-        for (int i = 0; i < meshCluster.indexCount; i++)
-            Debug.Log(Marshal.PtrToStructure<UInt32>(meshCluster.indexList));
+        MeshClusterResult meshClusterResult = ParsingResult(resultPtr);
     }
 
     [MenuItem("MeshClusterBuilder/TestSample1ForMS")]
-    public static void TestSample1ForMS()
+    private static void TestSample1ForMS()
     {
         RegisterUnityLogCallback(UnityLogCallback);
 

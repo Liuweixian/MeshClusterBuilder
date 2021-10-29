@@ -10,12 +10,34 @@
 
 struct MeshCluster
 {
-    MeshCluster() {}
-    MeshCluster(const MeshCluster* v)
+    MeshCluster()
+    {
+        m_nIndexCount = 0;
+        m_pIndexBuffer = NULL;
+    }
+    
+    MeshCluster(int indexCount)
+    {
+        m_nIndexCount = indexCount;
+        m_pIndexBuffer = new UInt32[m_nIndexCount];
+    }
+    
+    MeshCluster(const MeshCluster*& v)
     {
         m_nIndexCount = v->m_nIndexCount;
         m_pIndexBuffer = v->m_pIndexBuffer;
     }
+    
+    ~MeshCluster()
+    {
+        m_nIndexCount = 0;
+        if (m_pIndexBuffer != NULL)
+        {
+            delete[] m_pIndexBuffer;
+            m_pIndexBuffer = NULL;
+        }
+    }
+    
     int m_nIndexCount;
     UInt32* m_pIndexBuffer;
 };

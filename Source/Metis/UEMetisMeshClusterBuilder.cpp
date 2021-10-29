@@ -152,7 +152,7 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
     }
     
     DisjointSet set(nIndexDataCount / 3);
-    for (UInt32 edgeIndex = 0, num = sharedEdges.size(); edgeIndex < num; edgeIndex++)
+    for (UInt32 edgeIndex = 0, num = (UInt32)sharedEdges.size(); edgeIndex < num; edgeIndex++)
     {
         UInt32 otherEdgeIndex = sharedEdges[edgeIndex];
         if (otherEdgeIndex != ~0u)
@@ -212,9 +212,7 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
     {
         const GraphPartitioner::Range& range = graphPartitioner.m_Ranges[i];
         int triangleCount = range.End - range.Begin;
-        MeshCluster* meshCluster = new MeshCluster();
-        meshCluster->m_nIndexCount = triangleCount * 3;
-        meshCluster->m_pIndexBuffer = new UInt32[meshCluster->m_nIndexCount];
+        MeshCluster* meshCluster = new MeshCluster(triangleCount * 3);
         int index = 0;
         for (int j = range.Begin; j < range.End; j++)
         {
@@ -225,7 +223,7 @@ void UEMetisMeshClusterBuilder::Build(const Vector3f* pVertexData, const UInt32 
                 meshCluster->m_pIndexBuffer[index++] = vertIndex;
             }
         }
-        pMeshClusterResult->m_pMeshClusterList[i] = meshCluster;
+        pMeshClusterResult->m_pMeshClusterList[i] = *meshCluster;
     }
 }
 

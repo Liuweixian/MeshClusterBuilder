@@ -125,8 +125,8 @@
             filePath = "../../../Source/Metis/UEMetisMeshClusterBuilder.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "228"
-            endingLineNumber = "228"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "UEMetisMeshClusterBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
             landmarkType = "7">
             <Locations>
@@ -173,9 +173,105 @@
             filePath = "../../../Source/Metis/UEMetisMeshClusterBuilder.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "225"
-            endingLineNumber = "225"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "UEMetisMeshClusterBuilder::Build(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D311BA25-45D3-42E3-9B70-CFF5CBD23147"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/UnityEditorPlugin/DyLibEntry.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "ReleaseCulsterResult(pMeshClusterResult)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BD38C3C1-AA3A-4BD7-AA20-9ADF8A914935"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/UnityEditorPlugin/DyLibEntry.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "BuildCluster(eBuildType, nClusterSize, pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult)"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "32938CE3-A65B-447B-B0A1-C2836AC63879"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/MeshClusterResult.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "~MeshCluster()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "32938CE3-A65B-447B-B0A1-C2836AC63879 - 84ffbba7eb02fe7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MeshCluster::~MeshCluster()"
+                  moduleName = "MeshClusterBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Source/MeshClusterResult.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "37">
+               </Location>
+               <Location
+                  uuid = "32938CE3-A65B-447B-B0A1-C2836AC63879 - 84ffbba7eb02fe7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "MeshCluster::~MeshCluster()"
+                  moduleName = "MeshClusterBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Source/MeshClusterResult.h"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "37"
+                  endingLineNumber = "37"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FB4AE101-35CE-4E42-84FC-2EBF048C0355"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Source/MeshClusterResult.h"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "MeshCluster(v)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -48,11 +48,21 @@ extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API BuildCluster(BuilderT
     {
         MSMeshletBuilder meshletBuilder;
         meshletBuilder.SetClusterSize(nClusterSize);
-        //meshletBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, nClusterCount, pMeshCluster);
+        meshletBuilder.Build<UInt32>(pVertexData, nVertexDataCount, pIndexData, nIndexDataCount, bounds, pMeshClusterResult);
     }
     else
     {
         s_UnityLogCallback("Invalid Builder Type...");
     }
     s_UnityLogCallback("Finish Building Cluster...");
+}
+
+extern "C" void UNITY_INTERFACE_EXPORT UNITY_INTERFACE_API ReleaseCulsterResult(MeshClusterResult* pMeshClusterResult)
+{
+    pMeshClusterResult->m_nCount = 0;
+    if (pMeshClusterResult->m_pMeshClusterList != NULL)
+    {
+        delete[] pMeshClusterResult->m_pMeshClusterList;
+        pMeshClusterResult->m_pMeshClusterList = NULL;
+    }
 }

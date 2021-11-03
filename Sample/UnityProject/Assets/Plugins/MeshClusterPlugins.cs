@@ -128,8 +128,8 @@ public class MeshClusterPlugins
         IntPtr resultPtr = CreatePluginResult();
         BuildCluster(BuilderType.eUE_Metis, 128, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, resultPtr);
         MeshClusterResult meshClusterResult = ParsingResult(resultPtr);
-        CreateDebugMesh(vertices, indices, meshClusterResult, "ue_iron_man_data");
         ReleasePluginResult(resultPtr);
+        CreateDebugMesh(vertices, indices, meshClusterResult, "ue_iron_man_data");
     }
 
     [MenuItem("MeshClusterBuilder/TestSample1ForMS")]
@@ -146,10 +146,11 @@ public class MeshClusterPlugins
         Bounds bounds = new Bounds();
         bounds.SetMinMax(new Vector3(-100.00f, -100.00f, -100.00f), new Vector3(100.00f, 100.00f, 100.00f));
 
-        int nClusterCount = 0;
-        //MeshCluster[] pMeshCluster = null;
-        //BuildCluster(BuilderType.eMS_Meshlet, 64, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, ref nClusterCount, ref pMeshCluster);
-        Debug.Log("Result --> " + nClusterCount);
+        IntPtr resultPtr = CreatePluginResult();
+        BuildCluster(BuilderType.eMS_Meshlet, 64, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, resultPtr);
+        MeshClusterResult meshClusterResult = ParsingResult(resultPtr);
+        ReleasePluginResult(resultPtr);
+        CreateDebugMesh(vertices, indices, meshClusterResult, "ms_iron_man_data");
     }
 
     private static void CreateDebugMesh(List<Vector3> vertices, List<int> indices, MeshClusterResult meshClusterResult, string assetName)

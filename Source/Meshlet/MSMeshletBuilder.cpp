@@ -223,6 +223,24 @@ void MSMeshletBuilder::Build(const Vector3f* pVertexData, const UInt32 nVertexDa
     {
         output.pop_back();
     }
+    
+    pMeshClusterResult->m_nCount = (int)output.size();
+    pMeshClusterResult->m_pMeshClusterList = new MeshCluster[pMeshClusterResult->m_nCount];
+    for (int i = 0; i < pMeshClusterResult->m_nCount; i++)
+    {
+        InlineMeshlet<IndexType> meshlet = output[i];
+        int triangleCount = (int)meshlet.PrimitiveIndices.size();
+        MeshCluster* meshCluster = new MeshCluster(triangleCount * 3);
+        int index = 0;
+        for (int j = 0; j < triangleCount; j++)
+        {
+            typename InlineMeshlet<IndexType>::PackedTriangle packedTri = meshlet.PrimitiveIndices[j];
+            meshCluster->m_pIndexBuffer[index++] = meshlet.UniqueVertexIndices[packedTri.i0];
+            meshCluster->m_pIndexBuffer[index++] = meshlet.UniqueVertexIndices[packedTri.i1];
+            meshCluster->m_pIndexBuffer[index++] = meshlet.UniqueVertexIndices[packedTri.i2];
+        }
+        pMeshClusterResult->m_pMeshClusterList[i] = *meshCluster;
+    }
 }
 
 template void MSMeshletBuilder::Build<UInt32>(const Vector3f *pVertexData, const UInt32 nVertexDataCount, const UInt32 *pIndexData, const UInt32 nIndexDataCount, const AABB bounds, MeshClusterResult* pMeshClusterResult);

@@ -8,7 +8,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "49BF88E3-7C67-46DC-BADD-756B6AA03B12"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "../../../Source/Meshlet/MSMeshletBuilder.cpp"
@@ -63,6 +63,21 @@
                   startingLineNumber = "222"
                   endingLineNumber = "222"
                   offsetFromSymbolStart = "3741">
+               </Location>
+               <Location
+                  uuid = "49BF88E3-7C67-46DC-BADD-756B6AA03B12 - e3d61c8758af8fd4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "void MSMeshletBuilder::Build&lt;unsigned int&gt;(Vector3f const*, unsigned int, unsigned int const*, unsigned int, AABB, MeshClusterResult*)"
+                  moduleName = "MeshClusterBuilder"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/liuweixian/Documents/github-workspace/MeshClusterBuilder/Source/Meshlet/MSMeshletBuilder.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "222"
+                  endingLineNumber = "222"
+                  offsetFromSymbolStart = "3693">
                </Location>
             </Locations>
          </BreakpointContent>

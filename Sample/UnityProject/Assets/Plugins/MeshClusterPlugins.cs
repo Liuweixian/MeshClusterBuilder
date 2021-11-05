@@ -8,31 +8,31 @@ using Random = System.Random;
 
 public class MeshClusterPlugins
 {
-    enum BuilderType
+    public enum BuilderType
     {
         eUE_Metis,
         eMS_Meshlet
     };
 
-    struct MeshClusterForPlugin
+    private struct MeshClusterForPlugin
     {
         public int IndexCount;
         public IntPtr IndicesIntPtr;
     }
     
-    struct MeshClusterResultForPlugin
+    private struct MeshClusterResultForPlugin
     {
         public int MeshClusterCount;
         public IntPtr MeshClustersIntPtr;
     }
 
-    struct MeshCluster
+    public struct MeshCluster
     {
         public int IndexCount;
         public List<UInt32> Indices;
     }
 
-    struct MeshClusterResult
+    public struct MeshClusterResult
     {
         public int MeshClusterCount;
         public List<MeshCluster> MeshClusters;
@@ -55,23 +55,36 @@ public class MeshClusterPlugins
     [DllImport("MeshClusterBuilder", CallingConvention = CallingConvention.Cdecl)]
     static extern void ReleaseCulsterResult(IntPtr resultPtr);
 
-    [MenuItem("MeshClusterBuilder/BuildSelected")]
-    public static void BuildSelected()
+    [MenuItem("Assets/BuildMeshCluster/UE-Metis", false, 208)]
+    public static MeshClusterResult BuildSelectedMeshClusterByUEMetis()
+    {
+        return BuildSelectedMeshCluster(BuilderType.eUE_Metis, 128);
+    }
+    
+    [MenuItem("Assets/BuildMeshCluster/MS-Meshlet", false, 208)]
+    public static MeshClusterResult BuildSelectedMeshClusterByMSMeshlet()
+    {
+        return BuildSelectedMeshCluster(BuilderType.eMS_Meshlet, 64);
+    }
+    
+    public static MeshClusterResult BuildSelectedMeshCluster(BuilderType builderType, int nClusterSize)
     {
         RegisterUnityLogCallback(UnityLogCallback);
+        string assetPath = AssetDatabase.GetAssetPath(Selection.activeObject);
+        Mesh unityMeshData = AssetDatabase.LoadAssetAtPath<Mesh>(assetPath);
+        if (unityMeshData == null)
+        {
+            Debug.Log("Please select mesh asset or fbx asset!!");
+            return new MeshClusterResult();
+        }
 
-        //Mesh meshData = AssetDatabase.LoadAssetAtPath<Mesh>("Assets/FBX/VolumeToPolygon.fbx");
-        Mesh meshData = AssetDatabase.LoadAssetAtPath<Mesh>("Assets/FBX/plane.fbx");
-        //Mesh meshData = AssetDatabase.LoadAssetAtPath<Mesh>("Assets/FBX/cube.fbx");
-        //PrintVertices(meshData);
-        //return;
-        int[] indices = meshData.GetIndices(0);
-        Debug.Log(meshData.vertices.Length + "-" + indices.Length + "-" + meshData.bounds);
-
-        int nClusterCount = 0;
-        //MeshCluster[] pMeshCluster = new MeshCluster[1];
-        //BuildCluster(BuilderType.eUE_Metis, 128, meshData.vertices, meshData.vertices.Length, indices, indices.Length, meshData.bounds, ref nClusterCount, ref pMeshCluster);
-        Debug.Log("Result --> " + nClusterCount);
+        int[] indices = unityMeshData.GetIndices(0);
+        IntPtr resultPtr = CreatePluginResult();
+        BuildCluster(builderType, nClusterSize, unityMeshData.vertices, unityMeshData.vertexCount, indices, indices.Length, unityMeshData.bounds, resultPtr);
+        MeshClusterResult meshClusterResult = ParsingResult(resultPtr);
+        ReleasePluginResult(resultPtr);
+        CreateDebugMesh(unityMeshData, meshClusterResult, Selection.activeObject.name);
+        return meshClusterResult;
     }
 
     private static IntPtr CreatePluginResult()
@@ -125,11 +138,13 @@ public class MeshClusterPlugins
         Bounds bounds = new Bounds();
         bounds.SetMinMax(new Vector3(-0.854617f, -3.70903397f, -0.403672993f), new Vector3(0.854617f, 3.70903397f, 0.403672993f));
 
+        Vector3[] verticesArray = vertices.ToArray();
+        int[] indicesArray = indices.ToArray();
         IntPtr resultPtr = CreatePluginResult();
-        BuildCluster(BuilderType.eUE_Metis, 128, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, resultPtr);
+        BuildCluster(BuilderType.eUE_Metis, 128, verticesArray, vertices.Count, indicesArray, indices.Count, bounds, resultPtr);
         MeshClusterResult meshClusterResult = ParsingResult(resultPtr);
         ReleasePluginResult(resultPtr);
-        CreateDebugMesh(vertices, indices, meshClusterResult, "ue_iron_man_data");
+        CreateDebugMesh(verticesArray, indicesArray, meshClusterResult, "ue_iron_man_data");
     }
 
     [MenuItem("MeshClusterBuilder/TestSample1ForMS")]
@@ -146,14 +161,74 @@ public class MeshClusterPlugins
         Bounds bounds = new Bounds();
         bounds.SetMinMax(new Vector3(-100.00f, -100.00f, -100.00f), new Vector3(100.00f, 100.00f, 100.00f));
 
+        Vector3[] verticesArray = vertices.ToArray();
+        int[] indicesArray = indices.ToArray();
         IntPtr resultPtr = CreatePluginResult();
-        BuildCluster(BuilderType.eMS_Meshlet, 64, vertices.ToArray(), vertices.Count, indices.ToArray(), indices.Count, bounds, resultPtr);
+        BuildCluster(BuilderType.eMS_Meshlet, 64, verticesArray, vertices.Count, indicesArray, indices.Count, bounds, resultPtr);
         MeshClusterResult meshClusterResult = ParsingResult(resultPtr);
         ReleasePluginResult(resultPtr);
-        CreateDebugMesh(vertices, indices, meshClusterResult, "ms_iron_man_data");
+        CreateDebugMesh(verticesArray, indicesArray, meshClusterResult, "ms_iron_man_data");
     }
 
-    private static void CreateDebugMesh(List<Vector3> vertices, List<int> indices, MeshClusterResult meshClusterResult, string assetName)
+    private static void CreateDebugMesh(Mesh mesh, MeshClusterResult meshClusterResult, string assetName)
+    {
+        string outputDir = "Assets/Output-" + assetName + "/";
+        if (!Directory.Exists(outputDir))
+            Directory.CreateDirectory(outputDir);
+        GameObject root = new GameObject(assetName);
+
+        Vector3[] originVertices = mesh.vertices;
+        int[] originIndices = mesh.GetIndices(0);
+        Vector4[] originTangents = mesh.tangents;
+        Vector3[] originNormals = mesh.normals;
+        Vector2[] originUV = mesh.uv;
+        for (int i = 0; i < meshClusterResult.MeshClusterCount; i++)
+        {
+            Dictionary<int, int> indexMapping = new Dictionary<int, int>();
+            List<Vector3> newVertices = new List<Vector3>();
+            List<int> newIndices = new List<int>();
+            List<Vector4> newTangents = new List<Vector4>();
+            List<Vector3> newNormals = new List<Vector3>();
+            List<Vector2> newUV = new List<Vector2>();
+
+            MeshCluster meshCluster = meshClusterResult.MeshClusters[i];
+            for (int j = 0; j < meshCluster.IndexCount; j++)
+            {
+                int vertIndex = (int)meshCluster.Indices[j];
+                if (indexMapping.ContainsKey(vertIndex))
+                {
+                    newIndices.Add(indexMapping[vertIndex]);
+                    continue;
+                }
+
+                int curIndex = newVertices.Count;
+                newVertices.Add(originVertices[vertIndex]);
+                newIndices.Add(curIndex);
+                newTangents.Add(originTangents[vertIndex]);
+                newNormals.Add(originNormals[vertIndex]);
+                newUV.Add(originUV[vertIndex]);
+            }
+            
+            Mesh newMesh = new Mesh();
+            newMesh.SetVertices(newVertices);
+            newMesh.SetIndices(newIndices, MeshTopology.Triangles, 0, true);
+            newMesh.SetTangents(newTangents);
+            newMesh.SetNormals(newNormals);
+            newMesh.SetUVs(0, newUV);
+            string clusterName = "cluster-" + i;
+            AssetDatabase.CreateAsset(newMesh, outputDir + clusterName + ".asset");
+
+            GameObject cluster = new GameObject(clusterName);
+            cluster.transform.parent = root.transform;
+            MeshFilter meshFilter = cluster.AddComponent<MeshFilter>();
+            meshFilter.sharedMesh = newMesh;
+            MeshRenderer meshRenderer = cluster.AddComponent<MeshRenderer>();
+            meshRenderer.sharedMaterial = null;
+        }
+        AssetDatabase.Refresh();
+    }
+
+    private static void CreateDebugMesh(Vector3[] vertices, int[] indices, MeshClusterResult meshClusterResult, string assetName)
     {
         string outputDir = "Assets/Output-" + assetName + "/";
         if (!Directory.Exists(outputDir))
